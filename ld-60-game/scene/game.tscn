@@ -2,25 +2,65 @@
 
 [ext_resource type="PackedScene" uid="uid://k16wopb2mk8t" path="res://scene/player.tscn" id="1_5kiuu"]
 [ext_resource type="PackedScene" uid="uid://pm7emgr28huy" path="res://scene/StandardEnemy.tscn" id="2_dbls1"]
+[ext_resource type="Texture2D" uid="uid://c7uwfo76ng27j" path="res://assets/Paralaxe0.png" id="3_33cqm"]
+[ext_resource type="Texture2D" uid="uid://c2th6vlqqc2ua" path="res://assets/Paralaxe1.png" id="4_xlg7c"]
+[ext_resource type="Texture2D" uid="uid://cou5g1u8e8bov" path="res://assets/Paralaxe2.png" id="5_qpk70"]
+[ext_resource type="Texture2D" uid="uid://h6ueeee7wsnp" path="res://assets/Paralaxe3.png" id="6_ll5lq"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xrivr"]
 distance = -136.0
 
 [node name="Game" type="Node2D" unique_id=1573071005]
 
-[node name="player" parent="." unique_id=963260103 groups=["Player"] instance=ExtResource("1_5kiuu")]
+[node name="player" parent="." unique_id=963260103 instance=ExtResource("1_5kiuu")]
 z_index = 900
 position = Vector2(151, 107)
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=1791443678]
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
-position_smoothing_speed = 7.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2113442768]
+position = Vector2(2, 23)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1447877747]
 shape = SubResource("WorldBoundaryShape2D_xrivr")
 
 [node name="StandardEnemy" parent="." unique_id=1837803404 instance=ExtResource("2_dbls1")]
 position = Vector2(250, 89)
+
+[node name="paralaxe" type="Node2D" parent="." unique_id=1418363855]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="paralaxe" unique_id=1988723728]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="paralaxe/ParallaxBackground" unique_id=407959311]
+position = Vector2(152, 107)
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="paralaxe/ParallaxBackground/ParallaxLayer" unique_id=197863360]
+texture = ExtResource("3_33cqm")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="paralaxe/ParallaxBackground" unique_id=533776008]
+position = Vector2(152, 107)
+motion_scale = Vector2(0.33, 0.25)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="paralaxe/ParallaxBackground/ParallaxLayer2" unique_id=58019661]
+texture = ExtResource("4_xlg7c")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="paralaxe/ParallaxBackground" unique_id=1958874127]
+position = Vector2(151, 155)
+motion_scale = Vector2(0.66, 0.25)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="paralaxe/ParallaxBackground/ParallaxLayer3" unique_id=418761178]
+texture = ExtResource("5_qpk70")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="paralaxe/ParallaxBackground" unique_id=254111210]
+position = Vector2(152, 45)
+motion_scale = Vector2(1, 0.75)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="paralaxe/ParallaxBackground/ParallaxLayer4" unique_id=887460248]
+texture = ExtResource("6_ll5lq")
