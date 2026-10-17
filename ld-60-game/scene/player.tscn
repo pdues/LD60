@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cmkkpswrmcjcp" path="res://script/states/state_machine.gd" id="3_fvtld"]
 [ext_resource type="Script" uid="uid://bwvoyha86ca4h" path="res://script/states/playerMovement.gd" id="4_ct4mp"]
 [ext_resource type="Script" uid="uid://cvrlvfqut7jqp" path="res://script/states/playerIdle.gd" id="5_s4jxa"]
+[ext_resource type="Script" uid="uid://34v1rx2q4sa" path="res://script/states/playerJump.gd" id="6_oh5ij"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xrivr"]
 
@@ -43,3 +44,8 @@ metadata/_custom_type_script = "uid://cvrlvfqut7jqp"
 script = ExtResource("4_ct4mp")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://bwvoyha86ca4h"
+
+[node name="playerJump" type="Node" parent="state_machine" unique_id=1225700253 node_paths=PackedStringArray("player")]
+script = ExtResource("6_oh5ij")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://34v1rx2q4sa"
