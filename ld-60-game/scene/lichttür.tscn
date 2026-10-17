@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bpptsygg5pmp7"]
+
+[ext_resource type="Script" uid="uid://bfjop117dtao6" path="res://script/lichttür.gd" id="1_v8h5v"]
+[ext_resource type="Texture2D" uid="uid://b3nrl06y7aimw" path="res://icon.svg" id="2_ryy88"]
+[ext_resource type="Script" uid="uid://dlfsy2xpmstrr" path="res://script/lichtlock.gd" id="3_ryy88"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bkod"]
+size = Vector2(20, 87)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1bkod"]
+polygon = PackedVector2Array(-10, -43, 10, -43, 10, 43, -9, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofbfx"]
+size = Vector2(20, 18)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7debn"]
+polygon = PackedVector2Array(-11, -12, 11, -12, 11, 8, -11, 8)
+
+[node name="lichttür" type="StaticBody2D" unique_id=785221569]
+script = ExtResource("1_v8h5v")
+
+[node name="TÜR_coll" type="CollisionShape2D" parent="." unique_id=531149740]
+position = Vector2(300, 115)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_1bkod")
+
+[node name="TÜR_Sprite" type="Sprite2D" parent="TÜR_coll" unique_id=1257699390]
+position = Vector2(0, -7.6293945e-06)
+scale = Vector2(0.17968732, 0.6875)
+texture = ExtResource("2_ryy88")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="TÜR_coll" unique_id=1003755194]
+occluder = SubResource("OccluderPolygon2D_1bkod")
+
+[node name="Lock1" type="Area2D" parent="." unique_id=1689997404]
+position = Vector2(229, 138)
+script = ExtResource("3_ryy88")
+
+[node name="Lock1_Texture" type="Sprite2D" parent="Lock1" unique_id=1680509241]
+position = Vector2(0.5, -1.5)
+scale = Vector2(0.1796875, 0.1796875)
+texture = ExtResource("2_ryy88")
+
+[node name="Lock1_Collider" type="CollisionShape2D" parent="Lock1" unique_id=1231132685]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_ofbfx")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Lock1" unique_id=1874534859]
+occluder = SubResource("OccluderPolygon2D_7debn")
+
+[connection signal="area_entered" from="Lock1" to="Lock1" method="_on_area_entered"]

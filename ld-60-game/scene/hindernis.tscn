@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bkod"]
 size = Vector2(42, 67)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1bkod"]
+polygon = PackedVector2Array(-16, -22, -16, 31, 26, 30, 26, -21)
+
 [node name="Hindernis" type="StaticBody2D" unique_id=1907527197]
 position = Vector2(-6, 30)
 script = ExtResource("1_6m4q0")
@@ -26,5 +29,9 @@ shape = SubResource("RectangleShape2D_1bkod")
 position = Vector2(0.9999999, 1)
 scale = Vector2(1.0078125, 0.78125)
 shape = SubResource("RectangleShape2D_1bkod")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=576561906]
+position = Vector2(-4, -3)
+occluder = SubResource("OccluderPolygon2D_1bkod")
 
 [connection signal="area_shape_entered" from="Hind_Area" to="." method="_on_hind_area_area_shape_entered"]

@@ -6,11 +6,29 @@
 [ext_resource type="Texture2D" uid="uid://c2th6vlqqc2ua" path="res://assets/Paralaxe1.png" id="4_xlg7c"]
 [ext_resource type="Texture2D" uid="uid://cou5g1u8e8bov" path="res://assets/Paralaxe2.png" id="5_qpk70"]
 [ext_resource type="Texture2D" uid="uid://h6ueeee7wsnp" path="res://assets/Paralaxe3.png" id="6_ll5lq"]
+[ext_resource type="PackedScene" uid="uid://bpptsygg5pmp7" path="res://scene/lichttür.tscn" id="4_p1ry8"]
+[ext_resource type="PackedScene" uid="uid://fayl34ikgtsh" path="res://scene/licht.tscn" id="4_xwcet"]
+
+[sub_resource type="Gradient" id="Gradient_xwcet"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xlg7c"]
+gradient = SubResource("Gradient_xwcet")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_q7g21"]
+diffuse_texture = SubResource("GradientTexture2D_xlg7c")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xrivr"]
 distance = -136.0
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1bkod"]
+polygon = PackedVector2Array(-75, 135, 402, 140, 403, 221, -79, 218)
+
 [node name="Game" type="Node2D" unique_id=1573071005]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1115825412]
+position = Vector2(194.5, 112.00001)
+scale = Vector2(561, 268)
+texture = SubResource("CanvasTexture_q7g21")
 
 [node name="player" parent="." unique_id=963260103 instance=ExtResource("1_5kiuu")]
 z_index = 20
@@ -18,6 +36,15 @@ position = Vector2(160, 90)
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=1791443678]
 zoom = Vector2(3, 3)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Camera2D" unique_id=1954762587]
+color = Color(0.1987377, 0.1987377, 0.1987377, 1)
+
+[node name="player" parent="." unique_id=963260103 groups=["Player"] instance=ExtResource("1_5kiuu")]
+position = Vector2(115, 119)
+
+[node name="Licht" parent="player" unique_id=361559328 instance=ExtResource("4_xwcet")]
+position = Vector2(1, 2)
 position_smoothing_enabled = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2113442768]
@@ -26,6 +53,8 @@ position = Vector2(2, 23)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1447877747]
 shape = SubResource("WorldBoundaryShape2D_xrivr")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="StaticBody2D" unique_id=1278822566]
+occluder = SubResource("OccluderPolygon2D_1bkod")
 [node name="StandardEnemy" parent="." unique_id=1837803404 instance=ExtResource("2_dbls1")]
 position = Vector2(250, 89)
 
@@ -69,3 +98,6 @@ motion_mirroring = Vector2(640, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="parallaxe/ParallaxBackground/ParallaxLayer4" unique_id=887460248]
 texture = ExtResource("6_ll5lq")
+
+[node name="lichttür" parent="." unique_id=785221569 instance=ExtResource("4_p1ry8")]
+position = Vector2(0, -15)

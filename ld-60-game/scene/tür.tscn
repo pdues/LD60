@@ -7,8 +7,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bkod"]
 size = Vector2(20, 87)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1bkod"]
+polygon = PackedVector2Array(-10, -43, 10, -43, 10, 43, -9, 43)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ofbfx"]
 size = Vector2(20, 96)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7debn"]
+polygon = PackedVector2Array(-11, -12, 11, -12, 11, 8, -11, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kiuu"]
 size = Vector2(20, 96)
@@ -30,6 +36,9 @@ position = Vector2(0, -7.6293945e-06)
 scale = Vector2(0.17968732, 0.6875)
 texture = ExtResource("2_5pmbp")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="TÜR_coll" unique_id=1003755194]
+occluder = SubResource("OccluderPolygon2D_1bkod")
+
 [node name="Lock1" type="Area2D" parent="." unique_id=1689997404]
 position = Vector2(146, 69)
 script = ExtResource("3_ofbfx")
@@ -42,6 +51,9 @@ texture = ExtResource("2_5pmbp")
 [node name="Lock1_Collider" type="CollisionShape2D" parent="Lock1" unique_id=1231132685]
 position = Vector2(1, 37)
 shape = SubResource("RectangleShape2D_ofbfx")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Lock1" unique_id=1874534859]
+occluder = SubResource("OccluderPolygon2D_7debn")
 
 [node name="Lock2" type="Area2D" parent="." unique_id=1026623717]
 position = Vector2(183, 70)
@@ -56,6 +68,9 @@ texture = ExtResource("2_5pmbp")
 position = Vector2(-1, 37)
 shape = SubResource("RectangleShape2D_5kiuu")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Lock2" unique_id=101915024]
+occluder = SubResource("OccluderPolygon2D_7debn")
+
 [node name="Lock3" type="Area2D" parent="." unique_id=1801834733]
 position = Vector2(218, 71)
 script = ExtResource("3_ofbfx")
@@ -68,6 +83,9 @@ texture = ExtResource("2_5pmbp")
 [node name="Lock3_Collider" type="CollisionShape2D" parent="Lock3" unique_id=974764476]
 position = Vector2(-1, 37)
 shape = SubResource("RectangleShape2D_5kiuu")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Lock3" unique_id=1207184858]
+occluder = SubResource("OccluderPolygon2D_7debn")
 
 [node name="Lock4" type="Area2D" parent="." unique_id=1406256692]
 position = Vector2(250, 71)
@@ -82,3 +100,6 @@ texture = ExtResource("2_5pmbp")
 position = Vector2(-1, 37)
 shape = SubResource("RectangleShape2D_5kiuu")
 script = SubResource("GDScript_5pmbp")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Lock4" unique_id=106350153]
+occluder = SubResource("OccluderPolygon2D_7debn")
