@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cmkkpswrmcjcp" path="res://script/states/state_machine.gd" id="3_6javv"]
 [ext_resource type="Script" uid="uid://by14bnmp2pqd0" path="res://script/states/EnemyIdle.gd" id="4_f2rvi"]
 [ext_resource type="Script" uid="uid://b1lg1la5rmin0" path="res://script/states/EnemyChase.gd" id="5_6javv"]
+[ext_resource type="Script" uid="uid://b2spvld72el3a" path="res://script/states/EnemyAttack.gd" id="6_145k0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aliaw"]
 radius = 7.0
@@ -45,3 +46,8 @@ metadata/_custom_type_script = "uid://by14bnmp2pqd0"
 script = ExtResource("5_6javv")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://b1lg1la5rmin0"
+
+[node name="attack" type="Node" parent="State Machine" unique_id=2005276874 node_paths=PackedStringArray("enemy")]
+script = ExtResource("6_145k0")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://b2spvld72el3a"
