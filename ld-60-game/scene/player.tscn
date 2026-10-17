@@ -45,6 +45,10 @@ position = Vector2(15, -3)
 shape = SubResource("RectangleShape2D_13qdw")
 disabled = true
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=997488243]
+position = Vector2(-94, -31)
+occluder = SubResource("OccluderPolygon2D_1bkod")
+
 [node name="state_machine" type="Node" parent="." unique_id=1699407386 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_fvtld")
 initial_state = NodePath("playerIdle")
@@ -69,14 +73,3 @@ metadata/_custom_type_script = "uid://34v1rx2q4sa"
 script = ExtResource("7_hp4bs")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://dt65fdxii0awn"
-
-[node name="hitbox_punch" type="Area2D" parent="." unique_id=1215043374]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_punch" unique_id=222129076 groups=["Hitbox"]]
-position = Vector2(24, -3)
-shape = SubResource("RectangleShape2D_13qdw")
-disabled = true
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=997488243]
-position = Vector2(-94, -31)
-occluder = SubResource("OccluderPolygon2D_1bkod")
