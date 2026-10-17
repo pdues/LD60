@@ -7,6 +7,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bkod"]
 size = Vector2(20, 87)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofbfx"]
+size = Vector2(20, 96)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kiuu"]
 size = Vector2(20, 96)
 
@@ -38,7 +41,7 @@ texture = ExtResource("2_5pmbp")
 
 [node name="Lock1_Collider" type="CollisionShape2D" parent="Lock1" unique_id=1231132685]
 position = Vector2(1, 37)
-shape = SubResource("RectangleShape2D_5kiuu")
+shape = SubResource("RectangleShape2D_ofbfx")
 
 [node name="Lock2" type="Area2D" parent="." unique_id=1026623717]
 position = Vector2(183, 70)

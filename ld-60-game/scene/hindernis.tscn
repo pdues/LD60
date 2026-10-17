@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d2lx71xs500bv"]
+
+[ext_resource type="Script" uid="uid://c01enal2snogt" path="res://script/hindernis.gd" id="1_6m4q0"]
+[ext_resource type="Texture2D" uid="uid://b3nrl06y7aimw" path="res://icon.svg" id="2_dth7p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bkod"]
+size = Vector2(42, 67)
+
+[node name="Hindernis" type="StaticBody2D" unique_id=1907527197]
+position = Vector2(-6, 30)
+script = ExtResource("1_6m4q0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=396854861]
+position = Vector2(1.4999981, 1.5)
+scale = Vector2(0.32031247, 0.3984375)
+texture = ExtResource("2_dth7p")
+
+[node name="Hind_Area" type="Area2D" parent="." unique_id=1627175906]
+
+[node name="Hind_Area_Coll" type="CollisionShape2D" parent="Hind_Area" unique_id=1213878491]
+position = Vector2(0.9999999, 1)
+scale = Vector2(1.0078125, 0.78125)
+shape = SubResource("RectangleShape2D_1bkod")
+
+[node name="Hind_Coll" type="CollisionShape2D" parent="." unique_id=82357189]
+position = Vector2(0.9999999, 1)
+scale = Vector2(1.0078125, 0.78125)
+shape = SubResource("RectangleShape2D_1bkod")
+
+[connection signal="area_shape_entered" from="Hind_Area" to="." method="_on_hind_area_area_shape_entered"]
