@@ -31,9 +31,16 @@ script = ExtResource("1_hjaqi")
 shape = SubResource("CapsuleShape2D_xrivr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1393654290]
-position = Vector2(0.4999997, 0)
-scale = Vector2(0.13281251, 0.2265625)
+position = Vector2(-1.7881393e-07, 0)
+scale = Vector2(0.140625, 0.2265625)
 sprite_frames = SubResource("SpriteFrames_xrivr")
+
+[node name="hitbox_punch" type="Area2D" parent="." unique_id=1215043374]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_punch" unique_id=222129076 groups=["Hitbox"]]
+position = Vector2(15, -3)
+shape = SubResource("RectangleShape2D_13qdw")
+disabled = true
 
 [node name="state_machine" type="Node" parent="." unique_id=1699407386 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_fvtld")
@@ -47,6 +54,7 @@ metadata/_custom_type_script = "uid://cvrlvfqut7jqp"
 [node name="playerMovement" type="Node" parent="state_machine" unique_id=1210722751 node_paths=PackedStringArray("player")]
 script = ExtResource("4_ct4mp")
 player = NodePath("../..")
+hitbox_offset = 15.0
 metadata/_custom_type_script = "uid://bwvoyha86ca4h"
 
 [node name="playerJump" type="Node" parent="state_machine" unique_id=1225700253 node_paths=PackedStringArray("player")]
@@ -58,10 +66,3 @@ metadata/_custom_type_script = "uid://34v1rx2q4sa"
 script = ExtResource("7_hp4bs")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://dt65fdxii0awn"
-
-[node name="hitbox_punch" type="Area2D" parent="." unique_id=1215043374]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_punch" unique_id=222129076 groups=["Hitbox"]]
-position = Vector2(15, -3)
-shape = SubResource("RectangleShape2D_13qdw")
-disabled = true
