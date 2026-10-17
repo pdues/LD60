@@ -14,4 +14,6 @@ func Physics_Update(_delta: float):
 		
 	if Input.is_action_just_pressed("ui_up") and player.is_on_floor():
 		Transitioned.emit(self, "playerJump")
+	if Input.is_action_just_pressed("ui_select"):
+		Transitioned.emit(self, "playerPunch")
 		
