@@ -9,13 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://cou5g1u8e8bov" path="res://assets/Paralaxe2.png" id="5_qpk70"]
 [ext_resource type="Texture2D" uid="uid://h6ueeee7wsnp" path="res://assets/Paralaxe3.png" id="6_ll5lq"]
 
-[sub_resource type="Gradient" id="Gradient_xwcet"]
+[sub_resource type="Gradient" id="Gradient_ll5lq"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_xlg7c"]
-gradient = SubResource("Gradient_xwcet")
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_q7g21"]
-diffuse_texture = SubResource("GradientTexture2D_xlg7c")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1bkod"]
+gradient = SubResource("Gradient_ll5lq")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xrivr"]
 distance = -136.0
@@ -25,11 +22,6 @@ polygon = PackedVector2Array(-75, 135, 402, 140, 403, 221, -79, 218)
 
 [node name="Game" type="Node2D" unique_id=1573071005]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1115825412]
-position = Vector2(194.5, 112.00001)
-scale = Vector2(561, 268)
-texture = SubResource("CanvasTexture_q7g21")
-
 [node name="player" parent="." unique_id=963260103 instance=ExtResource("1_5kiuu")]
 z_index = 20
 position = Vector2(160, 90)
@@ -37,11 +29,16 @@ position = Vector2(160, 90)
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=1791443678]
 zoom = Vector2(3, 3)
 
+[node name="lichtcanvas" type="Sprite2D" parent="player/Camera2D" unique_id=368611500]
+modulate = Color(0.66288584, 0.66288584, 0.66288584, 0.47843137)
+show_behind_parent = true
+z_index = -90
+position = Vector2(229, -14.000008)
+scale = Vector2(22.1875, 9.4375)
+texture = SubResource("GradientTexture2D_1bkod")
+
 [node name="Licht" parent="player" unique_id=361559328 instance=ExtResource("4_xwcet")]
 position = Vector2(1, 2)
-
-[node name="Camera2D#CanvasModulate" type="CanvasModulate" parent="." unique_id=1954762587]
-color = Color(0.1987377, 0.1987377, 0.1987377, 1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2113442768]
 position = Vector2(2, 23)
@@ -61,7 +58,16 @@ position = Vector2(-48, 109)
 [node name="Hindernis" parent="." unique_id=405979128 instance=ExtResource("3_33cqm")]
 position = Vector2(53, 135)
 
+[node name="lichttür" parent="." unique_id=785221569 instance=ExtResource("4_p1ry8")]
+position = Vector2(0, -15)
+
+[node name="Camera2D#CanvasModulate" type="CanvasModulate" parent="." unique_id=1954762587]
+z_index = -100
+color = Color(0.1987377, 0.1987377, 0.1987377, 1)
+
 [node name="parallaxe" type="Node2D" parent="." unique_id=1418363855]
+z_index = -100
+z_as_relative = false
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="parallaxe" unique_id=1988723728]
 
@@ -95,6 +101,3 @@ motion_mirroring = Vector2(640, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="parallaxe/ParallaxBackground/ParallaxLayer4" unique_id=887460248]
 texture = ExtResource("6_ll5lq")
-
-[node name="lichttür" parent="." unique_id=785221569 instance=ExtResource("4_p1ry8")]
-position = Vector2(0, -15)
