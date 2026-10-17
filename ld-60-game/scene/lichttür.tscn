@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bpptsygg5pmp7"]
 
 [ext_resource type="Script" uid="uid://bfjop117dtao6" path="res://script/lichttür.gd" id="1_v8h5v"]
-[ext_resource type="Texture2D" uid="uid://b3nrl06y7aimw" path="res://icon.svg" id="2_ryy88"]
+[ext_resource type="Texture2D" uid="uid://ulufer6iumfd" path="res://assets/tür.png" id="2_ryy88"]
 [ext_resource type="Script" uid="uid://dlfsy2xpmstrr" path="res://script/lichtlock.gd" id="3_ryy88"]
+[ext_resource type="Texture2D" uid="uid://dm65skqbmafx2" path="res://assets/lightlock.png" id="4_ryy88"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bkod"]
 size = Vector2(20, 87)
@@ -10,11 +11,37 @@ size = Vector2(20, 87)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1bkod"]
 polygon = PackedVector2Array(-10, -43, 10, -43, 10, 43, -9, 43)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve8x0"]
+atlas = ExtResource("4_ryy88")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8b3rx"]
+atlas = ExtResource("4_ryy88")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1bkod"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ve8x0")
+}],
+"loop": 0,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8b3rx")
+}],
+"loop": 1,
+"name": &"on",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ofbfx"]
-size = Vector2(20, 18)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7debn"]
-polygon = PackedVector2Array(-11, -12, 11, -12, 11, 8, -11, 8)
+polygon = PackedVector2Array(-6, -12, 6, -12, 10, -8, 10, 4, 6, 8, -6.1907425, 8.000001, -10, 4, -10.000001, -7.9183817)
 
 [node name="lichttür" type="StaticBody2D" unique_id=785221569]
 script = ExtResource("1_v8h5v")
@@ -24,28 +51,33 @@ position = Vector2(300, 115)
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_1bkod")
 
-[node name="TÜR_Sprite" type="Sprite2D" parent="TÜR_coll" unique_id=1257699390]
-position = Vector2(0, -7.6293945e-06)
-scale = Vector2(0.17968732, 0.6875)
-texture = ExtResource("2_ryy88")
-
 [node name="LightOccluder2D" type="LightOccluder2D" parent="TÜR_coll" unique_id=1003755194]
 occluder = SubResource("OccluderPolygon2D_1bkod")
+
+[node name="TÜR_Sprite" type="Sprite2D" parent="TÜR_coll" unique_id=864872337]
+texture_filter = 1
+position = Vector2(-7.6293945e-06, 7.0000014)
+scale = Vector2(1.1249988, 1.4583335)
+texture = ExtResource("2_ryy88")
 
 [node name="Lock1" type="Area2D" parent="." unique_id=1689997404]
 position = Vector2(229, 138)
 script = ExtResource("3_ryy88")
 
-[node name="Lock1_Texture" type="Sprite2D" parent="Lock1" unique_id=1680509241]
-position = Vector2(0.5, -1.5)
-scale = Vector2(0.1796875, 0.1796875)
-texture = ExtResource("2_ryy88")
+[node name="Lock1_Asprite" type="AnimatedSprite2D" parent="Lock1" unique_id=1683559049]
+texture_filter = 1
+position = Vector2(1, -3)
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_1bkod")
+animation = &"off"
 
 [node name="Lock1_Collider" type="CollisionShape2D" parent="Lock1" unique_id=1231132685]
-position = Vector2(1, -2)
+position = Vector2(1, -3)
 shape = SubResource("RectangleShape2D_ofbfx")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Lock1" unique_id=1874534859]
+position = Vector2(1, -1)
 occluder = SubResource("OccluderPolygon2D_7debn")
+occluder_light_mask = 0
 
 [connection signal="area_entered" from="Lock1" to="Lock1" method="_on_area_entered"]

@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://dqtkh7esfvg3s"]
 
 [ext_resource type="Script" uid="uid://cnaa4j17m3nir" path="res://script/tür.gd" id="1_ofbfx"]
-[ext_resource type="Texture2D" uid="uid://b3nrl06y7aimw" path="res://icon.svg" id="2_5pmbp"]
+[ext_resource type="Texture2D" uid="uid://ulufer6iumfd" path="res://assets/tür.png" id="2_5pmbp"]
 [ext_resource type="Script" uid="uid://ddio6kj4642pe" path="res://script/lock.gd" id="3_ofbfx"]
+[ext_resource type="Texture2D" uid="uid://bbpg4cyy7jt0x" path="res://assets/lock.png" id="4_5pmbp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bkod"]
 size = Vector2(20, 87)
@@ -14,14 +15,7 @@ polygon = PackedVector2Array(-10, -43, 10, -43, 10, 43, -9, 43)
 size = Vector2(20, 96)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7debn"]
-polygon = PackedVector2Array(-11, -12, 11, -12, 11, 8, -11, 8)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5kiuu"]
-size = Vector2(20, 96)
-
-[sub_resource type="GDScript" id="GDScript_5pmbp"]
-script/source = "extends CollisionShape2D
-"
+polygon = PackedVector2Array(-6, -11, 7, -11, 10, -8, 10, 5, 7, 8, -6, 8, -9, 5, -9, -8)
 
 [node name="TÜR" type="StaticBody2D" unique_id=785221569]
 script = ExtResource("1_ofbfx")
@@ -32,21 +26,24 @@ scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_1bkod")
 
 [node name="TÜR_Sprite" type="Sprite2D" parent="TÜR_coll" unique_id=1257699390]
-position = Vector2(0, -7.6293945e-06)
-scale = Vector2(0.17968732, 0.6875)
+texture_filter = 1
+position = Vector2(-7.6293945e-06, 7.0000014)
+scale = Vector2(1.1249988, 1.4583335)
 texture = ExtResource("2_5pmbp")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="TÜR_coll" unique_id=1003755194]
+visible = false
 occluder = SubResource("OccluderPolygon2D_1bkod")
 
 [node name="Lock1" type="Area2D" parent="." unique_id=1689997404]
-position = Vector2(146, 69)
+position = Vector2(133, 73)
 script = ExtResource("3_ofbfx")
 
 [node name="Lock1_Texture" type="Sprite2D" parent="Lock1" unique_id=1680509241]
+texture_filter = 1
 position = Vector2(0.5, -1.5)
-scale = Vector2(0.1796875, 0.1796875)
-texture = ExtResource("2_5pmbp")
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("4_5pmbp")
 
 [node name="Lock1_Collider" type="CollisionShape2D" parent="Lock1" unique_id=1231132685]
 position = Vector2(1, 37)
@@ -55,51 +52,53 @@ shape = SubResource("RectangleShape2D_ofbfx")
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Lock1" unique_id=1874534859]
 occluder = SubResource("OccluderPolygon2D_7debn")
 
-[node name="Lock2" type="Area2D" parent="." unique_id=1026623717]
-position = Vector2(183, 70)
+[node name="Lock2" type="Area2D" parent="." unique_id=441791105]
+position = Vector2(167, 74)
 script = ExtResource("3_ofbfx")
 
-[node name="Lock2_Texture" type="Sprite2D" parent="Lock2" unique_id=1182677536]
-position = Vector2(-1.5, -1.5)
-scale = Vector2(0.1796875, 0.1796875)
-texture = ExtResource("2_5pmbp")
+[node name="Lock1_Texture" type="Sprite2D" parent="Lock2" unique_id=199635027]
+texture_filter = 1
+position = Vector2(0.5, -1.5)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("4_5pmbp")
 
-[node name="Lock2_Collider" type="CollisionShape2D" parent="Lock2" unique_id=613792475]
-position = Vector2(-1, 37)
-shape = SubResource("RectangleShape2D_5kiuu")
+[node name="Lock1_Collider" type="CollisionShape2D" parent="Lock2" unique_id=2034567378]
+position = Vector2(1, 37)
+shape = SubResource("RectangleShape2D_ofbfx")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Lock2" unique_id=101915024]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Lock2" unique_id=253225871]
 occluder = SubResource("OccluderPolygon2D_7debn")
 
-[node name="Lock3" type="Area2D" parent="." unique_id=1801834733]
-position = Vector2(218, 71)
+[node name="Lock3" type="Area2D" parent="." unique_id=1101672520]
+position = Vector2(202, 73)
 script = ExtResource("3_ofbfx")
 
-[node name="Lock3_Texture" type="Sprite2D" parent="Lock3" unique_id=672054358]
-position = Vector2(-1.5, -1.5)
-scale = Vector2(0.1796875, 0.1796875)
-texture = ExtResource("2_5pmbp")
+[node name="Lock1_Texture" type="Sprite2D" parent="Lock3" unique_id=1575766291]
+texture_filter = 1
+position = Vector2(0.5, -1.5)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("4_5pmbp")
 
-[node name="Lock3_Collider" type="CollisionShape2D" parent="Lock3" unique_id=974764476]
-position = Vector2(-1, 37)
-shape = SubResource("RectangleShape2D_5kiuu")
+[node name="Lock1_Collider" type="CollisionShape2D" parent="Lock3" unique_id=260288952]
+position = Vector2(1, 37)
+shape = SubResource("RectangleShape2D_ofbfx")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Lock3" unique_id=1207184858]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Lock3" unique_id=1280333431]
 occluder = SubResource("OccluderPolygon2D_7debn")
 
-[node name="Lock4" type="Area2D" parent="." unique_id=1406256692]
-position = Vector2(250, 71)
+[node name="Lock4" type="Area2D" parent="." unique_id=743432560]
+position = Vector2(237, 74)
 script = ExtResource("3_ofbfx")
 
-[node name="Lock4_Texture" type="Sprite2D" parent="Lock4" unique_id=72402506]
-position = Vector2(-1.5, -1.5)
-scale = Vector2(0.1796875, 0.1796875)
-texture = ExtResource("2_5pmbp")
+[node name="Lock1_Texture" type="Sprite2D" parent="Lock4" unique_id=232339853]
+texture_filter = 1
+position = Vector2(0.5, -1.5)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("4_5pmbp")
 
-[node name="Lock4_Collider" type="CollisionShape2D" parent="Lock4" unique_id=107791911]
-position = Vector2(-1, 37)
-shape = SubResource("RectangleShape2D_5kiuu")
-script = SubResource("GDScript_5pmbp")
+[node name="Lock1_Collider" type="CollisionShape2D" parent="Lock4" unique_id=461071387]
+position = Vector2(1, 37)
+shape = SubResource("RectangleShape2D_ofbfx")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Lock4" unique_id=106350153]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Lock4" unique_id=1944616483]
 occluder = SubResource("OccluderPolygon2D_7debn")
