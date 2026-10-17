@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://cmkkpswrmcjcp" path="res://script/states/state_machine.gd" id="3_fvtld"]
 [ext_resource type="Script" uid="uid://bwvoyha86ca4h" path="res://script/states/playerMovement.gd" id="4_ct4mp"]
 [ext_resource type="Script" uid="uid://cvrlvfqut7jqp" path="res://script/states/playerIdle.gd" id="5_s4jxa"]
+[ext_resource type="Script" uid="uid://34v1rx2q4sa" path="res://script/states/playerJump.gd" id="6_oh5ij"]
+[ext_resource type="Script" uid="uid://dt65fdxii0awn" path="res://script/states/playerPunch.gd" id="7_hp4bs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xrivr"]
 
@@ -19,7 +21,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="player" type="CharacterBody2D" unique_id=963260103 groups=["Player"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
+size = Vector2(28, 12)
+
+[node name="player" type="CharacterBody2D" unique_id=963260103]
 script = ExtResource("1_hjaqi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1735037770]
@@ -43,3 +48,20 @@ metadata/_custom_type_script = "uid://cvrlvfqut7jqp"
 script = ExtResource("4_ct4mp")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://bwvoyha86ca4h"
+
+[node name="playerJump" type="Node" parent="state_machine" unique_id=1225700253 node_paths=PackedStringArray("player")]
+script = ExtResource("6_oh5ij")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://34v1rx2q4sa"
+
+[node name="playerPunch" type="Node" parent="state_machine" unique_id=767040315 node_paths=PackedStringArray("player")]
+script = ExtResource("7_hp4bs")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://dt65fdxii0awn"
+
+[node name="hitbox_punch" type="Area2D" parent="." unique_id=1215043374]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_punch" unique_id=222129076 groups=["Hitbox"]]
+position = Vector2(24, -3)
+shape = SubResource("RectangleShape2D_13qdw")
+disabled = true
