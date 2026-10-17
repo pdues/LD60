@@ -4,6 +4,14 @@ var toggle = 0
 var time_elapsed = 3.0
 var time = 0.0
 var normal_lich
+@export var dir = ""
+var hitbox_offset  =15.0
+
+func _physics_process(delta: float) -> void:
+	if dir == "right":
+		self.rotation = 0
+	else:
+		self.rotation = deg_to_rad(180)
 
 func _process(delta: float) -> void:
 	time += delta
