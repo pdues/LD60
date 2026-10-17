@@ -24,6 +24,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
 size = Vector2(28, 12)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1bkod"]
+polygon = PackedVector2Array(86, 20, 85, 44, 104, 44, 100, 18)
+
 [node name="player" type="CharacterBody2D" unique_id=963260103]
 script = ExtResource("1_hjaqi")
 
@@ -65,3 +68,7 @@ metadata/_custom_type_script = "uid://dt65fdxii0awn"
 position = Vector2(24, -3)
 shape = SubResource("RectangleShape2D_13qdw")
 disabled = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=997488243]
+position = Vector2(-94, -31)
+occluder = SubResource("OccluderPolygon2D_1bkod")

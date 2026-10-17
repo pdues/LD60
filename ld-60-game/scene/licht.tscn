@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://fayl34ikgtsh"]
+
+[ext_resource type="Script" uid="uid://2djpfmqymc64" path="res://scene/licht.gd" id="1_mwudh"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1bkod"]
+polygon = PackedVector2Array(0.39318871, -0.2877803, -0.39318871, -0.2877803, -0.5897831, -0.09592677, -0.39318871, 0.09592677, 0.39318871, 0.09592677, -0.4914859, 0.19185355, -0.9829717, -0.09592677, -0.4914859, -0.38370708)
+
+[sub_resource type="Gradient" id="Gradient_1sw0b"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 62
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pc3iq"]
+gradient = SubResource("Gradient_1sw0b")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.526087, 0.5304348)
+fill_to = Vector2(1, 0.5565217)
+
+[sub_resource type="Gradient" id="Gradient_mwudh"]
+offsets = PackedFloat32Array(0, 0.44578314, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1.3046829, 1.3046829, 1.3046829, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 82
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_persr"]
+gradient = SubResource("Gradient_mwudh")
+fill_from = Vector2(0, 0.004347826)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7debn"]
+size = Vector2(310, 31)
+
+[node name="Licht" type="Node2D" unique_id=361559328]
+script = ExtResource("1_mwudh")
+
+[node name="normal_schirm" type="LightOccluder2D" parent="." unique_id=610682833]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(11, 1)
+scale = Vector2(10.173233, 10.424619)
+occluder = SubResource("OccluderPolygon2D_1bkod")
+sdf_collision = false
+
+[node name="normal_licht" type="PointLight2D" parent="." unique_id=2094889752]
+position = Vector2(7, 0)
+scale = Vector2(4.561807, 4.6880636)
+color = Color(1, 1, 0.22352941, 1)
+energy = 2.7
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 2
+texture = SubResource("GradientTexture2D_pc3iq")
+texture_scale = 1.31
+height = 617.0
+
+[node name="beam_schirm" type="LightOccluder2D" parent="." unique_id=1459661932]
+visible = false
+modulate = Color(0, 0, 0, 1)
+position = Vector2(11, 1)
+scale = Vector2(10.173233, 10.424619)
+occluder = SubResource("OccluderPolygon2D_1bkod")
+sdf_collision = false
+
+[node name="beam_licht" type="PointLight2D" parent="." unique_id=369981380]
+visible = false
+position = Vector2(7, 0)
+scale = Vector2(10.173233, 0.3339695)
+color = Color(1, 1, 0.22352941, 1)
+energy = 4.0
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 2
+texture = SubResource("GradientTexture2D_persr")
+texture_scale = 1.31
+height = 632.0
+
+[node name="beam_ray" type="Area2D" parent="." unique_id=67000457 groups=["Lichtray"]]
+visible = false
+
+[node name="beam_collider" type="CollisionShape2D" parent="beam_ray" unique_id=1352994519]
+position = Vector2(159, -0.5)
+shape = SubResource("RectangleShape2D_7debn")
+disabled = true

@@ -3,6 +3,7 @@ extends StaticBody2D
 @onready var locks =[$Lock1,$Lock2,$Lock3,$Lock4]
 @onready var door = $"TÜR_coll"
 
+
 var open = false
 var opened = false
 var shift = 100
