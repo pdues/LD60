@@ -8,7 +8,7 @@ distance = -136.0
 
 [node name="Game" type="Node2D" unique_id=1573071005]
 
-[node name="player" parent="." unique_id=963260103 instance=ExtResource("1_5kiuu")]
+[node name="player" parent="." unique_id=963260103 groups=["Player"] instance=ExtResource("1_5kiuu")]
 z_index = 900
 position = Vector2(151, 107)
 
@@ -23,4 +23,4 @@ position_smoothing_speed = 7.0
 shape = SubResource("WorldBoundaryShape2D_xrivr")
 
 [node name="StandardEnemy" parent="." unique_id=1837803404 instance=ExtResource("2_dbls1")]
-position = Vector2(268, 114)
+position = Vector2(250, 89)

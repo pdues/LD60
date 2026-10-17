@@ -30,7 +30,7 @@ func Physics_Update(delta: float):
 	if enemy:
 		if not enemy.is_on_floor():
 			enemy.velocity.y += gravity * delta
-		enemy.velocity = move_direction * move_speed
+		enemy.velocity.x = move_direction.x * move_speed
 		
 	var direction = player.global_position - enemy.global_position
 	if direction.length() < 50:

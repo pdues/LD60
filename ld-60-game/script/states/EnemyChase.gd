@@ -12,12 +12,12 @@ func Enter():
 	
 func Physics_Update(delta: float):
 	if not enemy.is_on_floor():
-			enemy.velocity.y += gravity * delta
+		enemy.velocity.y += gravity * delta
 			
 	var direction = player.global_position - enemy.global_position
 	
 	if direction.length() > 20:
-		enemy.velocity = direction.normalized() * move_speed
+		enemy.velocity.x = direction.normalized().x * move_speed
 	else:
 		enemy.velocity = Vector2()
 		Transitioned.emit(self, "attack")

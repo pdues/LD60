@@ -12,4 +12,5 @@ func Enter():
 	enemy.velocity = Vector2(0.0, 0.0)
 	
 func Physics_Update(delta: float):
+	Transitioned.emit(self, "idle")
 	pass
