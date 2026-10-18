@@ -5,22 +5,96 @@
 [ext_resource type="Script" uid="uid://ddio6kj4642pe" path="res://script/lock.gd" id="3_ofbfx"]
 [ext_resource type="Texture2D" uid="uid://bbpg4cyy7jt0x" path="res://assets/lock.png" id="4_5pmbp"]
 
+[sub_resource type="Animation" id="Animation_5pmbp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TÜR_coll:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(300, 115)]
+}
+
+[sub_resource type="Animation" id="Animation_b5msu"]
+resource_name = "door close"
+length = 1.3333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TÜR_coll:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666672, 1.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(303, 198), Vector2(300, 115)]
+}
+
+[sub_resource type="Animation" id="Animation_4bpdx"]
+resource_name = "door slide"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TÜR_coll:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.16666667, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(300, 115), Vector2(303, 198)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b5msu"]
+_data = {
+&"RESET": SubResource("Animation_5pmbp"),
+&"door close": SubResource("Animation_b5msu"),
+&"door slide": SubResource("Animation_4bpdx")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bkod"]
-size = Vector2(20, 87)
+size = Vector2(19, 62)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1bkod"]
-polygon = PackedVector2Array(-10, -43, 10, -43, 10, 43, -9, 43)
+cull_mode = 1
+polygon = PackedVector2Array(28, 45, 0, 45, 0.5, -1.25, 0, -30, 45, -22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ofbfx"]
 size = Vector2(20, 96)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7debn"]
+cull_mode = 1
 polygon = PackedVector2Array(-6, -11, 7, -11, 10, -8, 10, 5, 7, 8, -6, 8, -9, 5, -9, -8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5pmbp"]
+cull_mode = 1
+polygon = PackedVector2Array(-6, -11, 7, -11, 10, -8, 10, 5, 7, 8, -6, 8, -9, 5, -9, -8)
+
+[sub_resource type="Gradient" id="Gradient_5pmbp"]
+offsets = PackedFloat32Array(0.030120483, 0.2, 0.46, 1)
+colors = PackedColorArray(0.9027778, 0.9027778, 0.9027778, 1, 0.22539008, 0.22539008, 0.22539008, 1, 0.061982274, 0.061982274, 0.061982274, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 100
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5pmbp"]
+gradient = SubResource("Gradient_5pmbp")
+fill = 1
+fill_from = Vector2(0.4826087, 0.47391304)
 
 [node name="TÜR" type="StaticBody2D" unique_id=785221569]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_ofbfx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1414307197]
+libraries/ = SubResource("AnimationLibrary_b5msu")
 
 [node name="TÜR_coll" type="CollisionShape2D" parent="." unique_id=531149740]
 position = Vector2(300, 115)
@@ -34,11 +108,12 @@ scale = Vector2(1.1249988, 1.4583335)
 texture = ExtResource("2_5pmbp")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="TÜR_coll" unique_id=1003755194]
-visible = false
+position = Vector2(1, -1)
 occluder = SubResource("OccluderPolygon2D_1bkod")
+sdf_collision = false
 
 [node name="Lock1" type="Area2D" parent="." unique_id=1689997404]
-position = Vector2(133, 73)
+position = Vector2(148, 130)
 script = ExtResource("3_ofbfx")
 
 [node name="Lock1_Texture" type="Sprite2D" parent="Lock1" unique_id=1680509241]
@@ -53,9 +128,10 @@ shape = SubResource("RectangleShape2D_ofbfx")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Lock1" unique_id=1874534859]
 occluder = SubResource("OccluderPolygon2D_7debn")
+occluder_light_mask = 0
 
 [node name="Lock2" type="Area2D" parent="." unique_id=441791105]
-position = Vector2(167, 74)
+position = Vector2(182.87279, 130.07077)
 script = ExtResource("3_ofbfx")
 
 [node name="Lock1_Texture" type="Sprite2D" parent="Lock2" unique_id=199635027]
@@ -69,10 +145,11 @@ position = Vector2(1, 37)
 shape = SubResource("RectangleShape2D_ofbfx")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Lock2" unique_id=253225871]
-occluder = SubResource("OccluderPolygon2D_7debn")
+occluder = SubResource("OccluderPolygon2D_5pmbp")
+occluder_light_mask = 0
 
 [node name="Lock3" type="Area2D" parent="." unique_id=1101672520]
-position = Vector2(202, 73)
+position = Vector2(217, 130)
 script = ExtResource("3_ofbfx")
 
 [node name="Lock1_Texture" type="Sprite2D" parent="Lock3" unique_id=1575766291]
@@ -87,9 +164,10 @@ shape = SubResource("RectangleShape2D_ofbfx")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Lock3" unique_id=1280333431]
 occluder = SubResource("OccluderPolygon2D_7debn")
+occluder_light_mask = 0
 
 [node name="Lock4" type="Area2D" parent="." unique_id=743432560]
-position = Vector2(237, 74)
+position = Vector2(251.12721, 129.92923)
 script = ExtResource("3_ofbfx")
 
 [node name="Lock1_Texture" type="Sprite2D" parent="Lock4" unique_id=232339853]
@@ -104,3 +182,44 @@ shape = SubResource("RectangleShape2D_ofbfx")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Lock4" unique_id=1944616483]
 occluder = SubResource("OccluderPolygon2D_7debn")
+occluder_light_mask = 0
+
+[node name="PointLight2D1" type="PointLight2D" parent="." unique_id=1045502798]
+z_index = 10
+position = Vector2(147.12721, 127.92922)
+scale = Vector2(0.874561, 0.8502676)
+color = Color(0.32156864, 0.7647059, 0.24705882, 1)
+energy = 1.03
+texture = SubResource("GradientTexture2D_5pmbp")
+offset = Vector2(5, 5)
+texture_scale = 4.27
+
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=219372001]
+z_index = 10
+position = Vector2(181.12721, 128.92923)
+scale = Vector2(0.874561, 0.8502676)
+color = Color(0.32156864, 0.7647059, 0.24705882, 1)
+energy = 1.03
+texture = SubResource("GradientTexture2D_5pmbp")
+offset = Vector2(5, 5)
+texture_scale = 4.27
+
+[node name="PointLight2D3" type="PointLight2D" parent="." unique_id=57537601]
+z_index = 10
+position = Vector2(216.12721, 127.92922)
+scale = Vector2(0.874561, 0.8502676)
+color = Color(0.32156864, 0.7647059, 0.24705882, 1)
+energy = 1.03
+texture = SubResource("GradientTexture2D_5pmbp")
+offset = Vector2(5, 5)
+texture_scale = 4.27
+
+[node name="PointLight2D4" type="PointLight2D" parent="." unique_id=1896322972]
+z_index = 10
+position = Vector2(251.12721, 128.92923)
+scale = Vector2(0.874561, 0.8502676)
+color = Color(0.32156864, 0.7647059, 0.24705882, 1)
+energy = 1.03
+texture = SubResource("GradientTexture2D_5pmbp")
+offset = Vector2(5, 5)
+texture_scale = 4.27

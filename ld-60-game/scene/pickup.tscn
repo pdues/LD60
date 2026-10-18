@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://baep2do5evxu4"]
+
+[ext_resource type="Script" uid="uid://b27r8l3wbe14h" path="res://script/pickup.gd" id="1_x228r"]
+[ext_resource type="Texture2D" uid="uid://bcrftbudjbmg7" path="res://assets/pickup.png" id="1_xj56s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1bkod"]
+
+[sub_resource type="Gradient" id="Gradient_5pmbp"]
+offsets = PackedFloat32Array(0.030120483, 0.2, 0.46, 1)
+colors = PackedColorArray(0.9027778, 0.9027778, 0.9027778, 1, 0.22539008, 0.22539008, 0.22539008, 1, 0.061982274, 0.061982274, 0.061982274, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 100
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x228r"]
+gradient = SubResource("Gradient_5pmbp")
+fill = 1
+fill_from = Vector2(0.4826087, 0.47391304)
+
+[node name="pickup" type="Area2D" unique_id=1020326846 groups=["pickup"]]
+script = ExtResource("1_x228r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1184688817]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_xj56s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1261611105]
+shape = SubResource("CircleShape2D_1bkod")
+
+[node name="PointLight2D1" type="PointLight2D" parent="." unique_id=1715726028]
+z_index = 10
+position = Vector2(-5.9604645e-08, 0)
+scale = Vector2(0.874561, 0.8502676)
+color = Color(0.32156864, 0.7647059, 0.24705882, 1)
+energy = 1.03
+texture = SubResource("GradientTexture2D_x228r")
+offset = Vector2(5, 5)
+texture_scale = 4.27
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

@@ -2,10 +2,11 @@ extends StaticBody2D
 
 @onready var locks =[$Lock1]
 @onready var door = $"TÜR_coll"
+@onready var animation = $AnimationPlayer
 
 
-var open = false
-var opened = false
+@onready var open = false
+@onready var opened = true
 var shift = 100
 func _process(delta: float) -> void:
 	if locks[0].curr_turnstate == 1 :
@@ -14,10 +15,10 @@ func _process(delta: float) -> void:
 		open = false
 		
 	if open == true and opened == false:
-		door.position += Vector2(0,1*shift)
+		$AnimationPlayer.play("door slide")
 		opened = true
 	
 	if open == false and opened == true:
-		door.position += Vector2(0,-1*shift)
+		$AnimationPlayer.play("door lock")
 		opened = false
 		

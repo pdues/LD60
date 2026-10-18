@@ -34,8 +34,9 @@ animations = [{
 size = Vector2(42, 67)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1bkod"]
+closed = false
 cull_mode = 1
-polygon = PackedVector2Array(-2, -14, -5, -3, -2, 2, -5.000001, 8.000002, -7, 16, -6, 22, -10.000001, 30.000002, 5.0000005, 30.000002, 8.000001, 25.000002, 8.000001, 16.000002, 3, 13.000002, 2, 4.000002, 5.0000005, 1.0000019, 14.000002, 1.9073486e-06, 19.000002, -4.999998, 18.000002, -8.999998, 8.000001, -14.999998)
+polygon = PackedVector2Array(5.0000005, 30.000002, 8.000001, 25.000002, 8.000001, 16.000002, 3, 13.000002, 2, 4.000002, 5.0000005, 1.0000019, 14.000002, 1.9073486e-06, 19.000002, -4.999998, 18.000002, -8.999998, 8.000001, -14.999998)
 
 [node name="Hindernis" type="StaticBody2D" unique_id=1907527197]
 position = Vector2(-6, 30)
@@ -70,4 +71,4 @@ scale = Vector2(0.99999994, 1)
 occluder = SubResource("OccluderPolygon2D_1bkod")
 sdf_collision = false
 
-[connection signal="area_shape_entered" from="Hind_Area" to="." method="_on_hind_area_area_shape_entered"]
+[connection signal="area_entered" from="Hind_Area" to="." method="_on_hind_area_area_entered"]
