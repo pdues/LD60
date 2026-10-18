@@ -1,13 +1,41 @@
 [gd_scene format=3 uid="uid://d2lx71xs500bv"]
 
 [ext_resource type="Script" uid="uid://c01enal2snogt" path="res://script/hindernis.gd" id="1_6m4q0"]
-[ext_resource type="Texture2D" uid="uid://b3nrl06y7aimw" path="res://icon.svg" id="2_dth7p"]
+[ext_resource type="Texture2D" uid="uid://2t4a15m5dxu8" path="res://assets/hindernis.png" id="2_6m4q0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dth7p"]
+atlas = ExtResource("2_6m4q0")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtbq4"]
+atlas = ExtResource("2_6m4q0")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1bkod"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dth7p")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtbq4")
+}],
+"loop": 1,
+"name": &"hit",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bkod"]
 size = Vector2(42, 67)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1bkod"]
-polygon = PackedVector2Array(-16, -22, -16, 31, 26, 30, 26, -21)
+cull_mode = 1
+polygon = PackedVector2Array(-2, -14, -5, -3, -2, 2, -5.000001, 8.000002, -7, 16, -6, 22, -10.000001, 30.000002, 5.0000005, 30.000002, 8.000001, 25.000002, 8.000001, 16.000002, 3, 13.000002, 2, 4.000002, 5.0000005, 1.0000019, 14.000002, 1.9073486e-06, 19.000002, -4.999998, 18.000002, -8.999998, 8.000001, -14.999998)
 
 [node name="Hindernis" type="StaticBody2D" unique_id=1907527197]
 position = Vector2(-6, 30)
@@ -15,10 +43,11 @@ collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_6m4q0")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=396854861]
-position = Vector2(1.4999981, 1.5)
-scale = Vector2(0.32031247, 0.3984375)
-texture = ExtResource("2_dth7p")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=733757816]
+texture_filter = 1
+position = Vector2(1, 1.5)
+scale = Vector2(1.0625, 1.0625)
+sprite_frames = SubResource("SpriteFrames_1bkod")
 
 [node name="Hind_Area" type="Area2D" parent="." unique_id=1627175906]
 collision_layer = 2
@@ -35,7 +64,10 @@ scale = Vector2(1.0078125, 0.78125)
 shape = SubResource("RectangleShape2D_1bkod")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=576561906]
-position = Vector2(-4, -3)
+texture_filter = 1
+position = Vector2(-4, -3.000002)
+scale = Vector2(0.99999994, 1)
 occluder = SubResource("OccluderPolygon2D_1bkod")
+sdf_collision = false
 
 [connection signal="area_shape_entered" from="Hind_Area" to="." method="_on_hind_area_area_shape_entered"]

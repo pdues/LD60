@@ -5,6 +5,8 @@ extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var hit : bool = false
+var dir := "right"
+
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
