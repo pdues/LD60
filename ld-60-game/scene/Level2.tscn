@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://k0t2t8cy6n2e" path="res://scene/lichttür3.tscn" id="6_e7nuw"]
 [ext_resource type="Texture2D" uid="uid://8kcmixrdw1eh" path="res://assets/wandbild.png" id="7_pgd3y"]
 [ext_resource type="PackedScene" uid="uid://baep2do5evxu4" path="res://scene/pickup.tscn" id="8_vilue"]
+[ext_resource type="PackedScene" uid="uid://pm7emgr28huy" path="res://scene/StandardEnemy.tscn" id="9_8pvpx"]
+[ext_resource type="Script" uid="uid://d22ir26i1nexq" path="res://script/object_stats.gd" id="10_pfv2s"]
+[ext_resource type="PackedScene" uid="uid://bhqxkbrokoyna" path="res://scene/respawnpoint.tscn" id="11_2d2cv"]
 
 [sub_resource type="Gradient" id="Gradient_ll5lq"]
 offsets = PackedFloat32Array(0, 0.32, 1)
@@ -103,17 +106,52 @@ physics_layer_0/collision_mask = 7
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_hjkxd")
 sources/0 = SubResource("TileSetAtlasSource_8pvpx")
 
+[sub_resource type="Resource" id="Resource_8pvpx"]
+resource_local_to_scene = true
+resource_name = "EnemyStats"
+script = ExtResource("10_pfv2s")
+max_health = 5
+current_health = 5
+metadata/_custom_type_script = "uid://d22ir26i1nexq"
+
+[sub_resource type="Resource" id="Resource_pfv2s"]
+resource_local_to_scene = true
+resource_name = "EnemyStats"
+script = ExtResource("10_pfv2s")
+max_health = 5
+current_health = 5
+metadata/_custom_type_script = "uid://d22ir26i1nexq"
+
+[sub_resource type="Resource" id="Resource_2d2cv"]
+resource_local_to_scene = true
+resource_name = "EnemyStats"
+script = ExtResource("10_pfv2s")
+max_health = 5
+current_health = 5
+metadata/_custom_type_script = "uid://d22ir26i1nexq"
+
+[sub_resource type="Resource" id="Resource_ma57r"]
+resource_local_to_scene = true
+resource_name = "EnemyStats"
+script = ExtResource("10_pfv2s")
+max_health = 5
+current_health = 5
+metadata/_custom_type_script = "uid://d22ir26i1nexq"
+
 [node name="Node2D" type="Node2D" unique_id=1179242632]
 
-[node name="player" parent="." unique_id=963260103 instance=ExtResource("1_a3hhw")]
+[node name="player" parent="." unique_id=963260103 node_paths=PackedStringArray("respawnpoint") instance=ExtResource("1_a3hhw")]
 z_index = 11
-position = Vector2(64, 149)
+position = Vector2(1476, 49)
+respawnpoint = NodePath("../respawnpoint_begin")
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=329846752]
+visible = false
 position = Vector2(0, -29)
 zoom = Vector2(3, 3)
 
 [node name="lichtcanvas" type="Sprite2D" parent="player/Camera2D" unique_id=454692040]
+visible = false
 modulate = Color(1, 1, 0.98039216, 0.41568628)
 z_index = -10
 position = Vector2(179, -271)
@@ -121,6 +159,7 @@ scale = Vector2(22.1875, 11.796875)
 texture = SubResource("GradientTexture2D_20pku")
 
 [node name="Camera2D#CanvasModulate" type="CanvasModulate" parent="player/Camera2D" unique_id=192160647]
+visible = false
 z_index = -100
 position = Vector2(-133, -115)
 color = Color(0.1991826, 0.1991826, 0.1991826, 1)
@@ -156,3 +195,27 @@ texture = ExtResource("7_pgd3y")
 
 [node name="pickup" parent="." unique_id=1020326846 instance=ExtResource("8_vilue")]
 position = Vector2(421, 144)
+
+[node name="StandardEnemy" parent="." unique_id=1837803404 instance=ExtResource("9_8pvpx")]
+position = Vector2(1208, -119)
+stats = SubResource("Resource_8pvpx")
+
+[node name="StandardEnemy2" parent="." unique_id=1169780697 instance=ExtResource("9_8pvpx")]
+position = Vector2(1055, 220)
+stats = SubResource("Resource_pfv2s")
+
+[node name="StandardEnemy3" parent="." unique_id=1526519585 instance=ExtResource("9_8pvpx")]
+position = Vector2(1395, 213)
+stats = SubResource("Resource_2d2cv")
+
+[node name="StandardEnemy4" parent="." unique_id=2017269418 instance=ExtResource("9_8pvpx")]
+position = Vector2(1601, 208)
+stats = SubResource("Resource_ma57r")
+
+[node name="respawnpoint_afterdoor" parent="." unique_id=1180942153 instance=ExtResource("11_2d2cv")]
+position = Vector2(1432, 140)
+
+[node name="respawnpoint_begin" parent="." unique_id=596513688 instance=ExtResource("11_2d2cv")]
+visible = false
+position = Vector2(20, 150)
+on = 1

@@ -29,6 +29,7 @@ Enemy=""
 Hitbox=""
 Lichtray=""
 pickup=""
+respawnpoint=""
 
 [layer_names]
 
