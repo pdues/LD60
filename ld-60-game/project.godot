@@ -29,6 +29,13 @@ Enemy=""
 Hitbox=""
 Lichtray=""
 
+[layer_names]
+
+2d_physics/layer_1="Floor"
+2d_physics/layer_2="Objects"
+2d_physics/layer_3="Player"
+2d_physics/layer_4="Enemies"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

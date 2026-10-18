@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://k16wopb2mk8t" path="res://scene/player.tscn" id="1_5kiuu"]
 [ext_resource type="PackedScene" uid="uid://pm7emgr28huy" path="res://scene/StandardEnemy.tscn" id="2_dbls1"]
 [ext_resource type="PackedScene" uid="uid://d2lx71xs500bv" path="res://scene/hindernis.tscn" id="3_33cqm"]
+[ext_resource type="Script" uid="uid://d22ir26i1nexq" path="res://script/object_stats.gd" id="4_17rxn"]
 [ext_resource type="PackedScene" uid="uid://bpptsygg5pmp7" path="res://scene/lichttür.tscn" id="4_p1ry8"]
 [ext_resource type="Texture2D" uid="uid://c2th6vlqqc2ua" path="res://assets/Paralaxe1.png" id="4_xlg7c"]
 [ext_resource type="PackedScene" uid="uid://fayl34ikgtsh" path="res://scene/licht.tscn" id="4_xwcet"]
@@ -19,6 +20,20 @@ distance = -136.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1bkod"]
 polygon = PackedVector2Array(-75, 135, 402, 140, 403, 221, -79, 218)
+
+[sub_resource type="Resource" id="Resource_yq8tf"]
+resource_local_to_scene = true
+script = ExtResource("4_17rxn")
+max_health = 5
+current_health = 5
+metadata/_custom_type_script = "uid://d22ir26i1nexq"
+
+[sub_resource type="Resource" id="Resource_ym5sv"]
+resource_local_to_scene = true
+script = ExtResource("4_17rxn")
+max_health = 5
+current_health = 5
+metadata/_custom_type_script = "uid://d22ir26i1nexq"
 
 [node name="Game" type="Node2D" unique_id=1573071005]
 
@@ -42,6 +57,7 @@ position = Vector2(1, 2)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2113442768]
 position = Vector2(2, 23)
+collision_mask = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1447877747]
 shape = SubResource("WorldBoundaryShape2D_xrivr")
@@ -51,9 +67,11 @@ occluder = SubResource("OccluderPolygon2D_1bkod")
 
 [node name="StandardEnemy" parent="." unique_id=1837803404 instance=ExtResource("2_dbls1")]
 position = Vector2(250, 89)
+stats = SubResource("Resource_yq8tf")
 
 [node name="StandardEnemy2" parent="." unique_id=345439060 instance=ExtResource("2_dbls1")]
 position = Vector2(-48, 109)
+stats = SubResource("Resource_ym5sv")
 
 [node name="Hindernis" parent="." unique_id=405979128 instance=ExtResource("3_33cqm")]
 position = Vector2(53, 135)

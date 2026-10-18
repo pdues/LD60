@@ -11,14 +11,17 @@ func Enter():
 	hitbox_player = player.get_children(true)[2].get_child(0)
 
 func Physics_Update(_delta: float) -> void:
+	if player.hit == true:
+		Transitioned.emit(self, "hurt")
+		
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction == 0:
-		Transitioned.emit(self, "playerIdle")
+		Transitioned.emit(self, "idle")
 		return
 	if Input.is_action_just_pressed("ui_up") and player.is_on_floor():
-		Transitioned.emit(self, "playerJump")
+		Transitioned.emit(self, "jump")
 	if Input.is_action_just_pressed("ui_select"):
-		Transitioned.emit(self, "playerPunch")
+		Transitioned.emit(self, "punch")
 	
 	player.velocity.x = direction * MOVESPEED
 	if player.velocity.x > 0:

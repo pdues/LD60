@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ObjectStats" format=3 uid="uid://dm4kasptepaaj"]
+
+[ext_resource type="Script" uid="uid://d22ir26i1nexq" path="res://script/object_stats.gd" id="1_uy44f"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "EnemyStats"
+script = ExtResource("1_uy44f")
+max_health = 5
+current_health = 5
+metadata/_custom_type_script = "uid://d22ir26i1nexq"

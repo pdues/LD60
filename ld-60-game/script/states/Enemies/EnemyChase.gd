@@ -13,6 +13,9 @@ func Enter():
 	player = get_tree().get_first_node_in_group("Player")
 	
 func Physics_Update(delta: float):
+	if enemy.hit == true:
+		Transitioned.emit(self, "hurt")
+	
 	if not enemy.is_on_floor():
 		enemy.velocity.y += gravity * delta
 			
@@ -22,11 +25,11 @@ func Physics_Update(delta: float):
 	else:
 		hitbox_attack.position.x = -4.0
 	
-	if direction.length() > 20:
+	if direction.length() > enemy.attack_range:
 		enemy.velocity.x = direction.normalized().x * move_speed
 	else:
 		enemy.velocity = Vector2()
 		Transitioned.emit(self, "attack")
 		
-	if direction.length() > 50:
-		Transitioned.emit(self, "idle")
+	if direction.length() > enemy.aggro_range:
+		Transitioned.emit(self, "rest")

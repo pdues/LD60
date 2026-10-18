@@ -1,5 +1,5 @@
 extends State
-class_name EnemyIdle
+class_name EnemyWander
 
 @export var enemy : CharacterBody2D
 @export var move_speed := 20.0
@@ -24,11 +24,12 @@ func Enter():
 func Update(delta: float):
 	if wander_time > 0:
 		wander_time -= delta
-		
 	else:
-		randomize_wander()
+		Transitioned.emit(self, "rest")
 
 func Physics_Update(delta: float):
+	if enemy.hit == true:
+		Transitioned.emit(self, "hurt")
 	if enemy:
 		if not enemy.is_on_floor():
 			enemy.velocity.y += gravity * delta
@@ -39,5 +40,5 @@ func Physics_Update(delta: float):
 			hitbox_attack.position.x = -4.0
 		
 	var direction = player.global_position - enemy.global_position
-	if direction.length() < 50:
+	if direction.length() < enemy.aggro_range:
 		Transitioned.emit(self, "chase")

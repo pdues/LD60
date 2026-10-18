@@ -12,12 +12,15 @@ func Enter():
 	hitbox_punch.disabled = false
 	
 func Physics_Update(delta: float):
+	if player.hit == true:
+		Transitioned.emit(self, "hurt")
+		
 	player.velocity.x = 0
 	punch_timer += delta
 	if punch_timer >= punch_cd:
 		punch_timer = 0.0
 		hitbox_punch.disabled = true
-		Transitioned.emit(self, "playerIdle")
+		Transitioned.emit(self, "idle")
 
 func Exit():
 	print("end punch")

@@ -2,11 +2,17 @@
 
 [ext_resource type="Script" uid="uid://i26yeem6gwa5" path="res://script/player.gd" id="1_hjaqi"]
 [ext_resource type="Texture2D" uid="uid://b3nrl06y7aimw" path="res://icon.svg" id="1_xo3ru"]
+[ext_resource type="Script" uid="uid://d3fpsa10xismy" path="res://script/hitbox.gd" id="3_2fvbb"]
 [ext_resource type="Script" uid="uid://cmkkpswrmcjcp" path="res://script/states/state_machine.gd" id="3_fvtld"]
-[ext_resource type="Script" uid="uid://bwvoyha86ca4h" path="res://script/states/playerMovement.gd" id="4_ct4mp"]
-[ext_resource type="Script" uid="uid://cvrlvfqut7jqp" path="res://script/states/playerIdle.gd" id="5_s4jxa"]
-[ext_resource type="Script" uid="uid://34v1rx2q4sa" path="res://script/states/playerJump.gd" id="6_oh5ij"]
-[ext_resource type="Script" uid="uid://dt65fdxii0awn" path="res://script/states/playerPunch.gd" id="7_hp4bs"]
+[ext_resource type="Script" uid="uid://bwvoyha86ca4h" path="res://script/states/Player/playerMovement.gd" id="4_ct4mp"]
+[ext_resource type="Script" uid="uid://ci3rdym5rhinp" path="res://script/weapon_stats.gd" id="4_ml7e8"]
+[ext_resource type="Script" uid="uid://dt5flil8qjm4a" path="res://script/hurtbox.gd" id="5_dk1vr"]
+[ext_resource type="Script" uid="uid://cvrlvfqut7jqp" path="res://script/states/Player/playerIdle.gd" id="5_s4jxa"]
+[ext_resource type="Script" uid="uid://d22ir26i1nexq" path="res://script/object_stats.gd" id="6_34jf3"]
+[ext_resource type="Script" uid="uid://34v1rx2q4sa" path="res://script/states/Player/playerJump.gd" id="6_oh5ij"]
+[ext_resource type="Script" uid="uid://dt65fdxii0awn" path="res://script/states/Player/playerPunch.gd" id="7_hp4bs"]
+[ext_resource type="Script" uid="uid://fd3lxvrvp46h" path="res://script/states/Player/PlayerHurt.gd" id="10_ml7e8"]
+[ext_resource type="Script" uid="uid://cshdfkknos78m" path="res://script/states/Player/PlayerDeath.gd" id="11_ihjo1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xrivr"]
 
@@ -21,13 +27,29 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Resource" id="Resource_aliaw"]
+resource_local_to_scene = true
+resource_name = "PlayerMelee"
+script = ExtResource("4_ml7e8")
+display_name = &"PlayerMeleeDmg"
+damage = 3
+metadata/_custom_type_script = "uid://ci3rdym5rhinp"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
 size = Vector2(28, 12)
+
+[sub_resource type="Resource" id="Resource_dk1vr"]
+resource_local_to_scene = true
+resource_name = "PlayerStats"
+script = ExtResource("6_34jf3")
+metadata/_custom_type_script = "uid://d22ir26i1nexq"
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1bkod"]
 polygon = PackedVector2Array(86, 20, 85, 44, 104, 44, 100, 18)
 
 [node name="player" type="CharacterBody2D" unique_id=963260103 groups=["Player"]]
+collision_layer = 4
+collision_mask = 11
 script = ExtResource("1_hjaqi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1735037770]
@@ -39,11 +61,24 @@ scale = Vector2(0.140625, 0.2265625)
 sprite_frames = SubResource("SpriteFrames_xrivr")
 
 [node name="hitbox_punch" type="Area2D" parent="." unique_id=1215043374]
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("3_2fvbb")
+weapon_stats = SubResource("Resource_aliaw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_punch" unique_id=222129076 groups=["Hitbox"]]
 position = Vector2(15, -3)
 shape = SubResource("RectangleShape2D_13qdw")
 disabled = true
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=596750844]
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("5_dk1vr")
+stats = SubResource("Resource_dk1vr")
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox" unique_id=1380701025]
+shape = SubResource("CapsuleShape2D_xrivr")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=997488243]
 position = Vector2(-94, -31)
@@ -51,25 +86,37 @@ occluder = SubResource("OccluderPolygon2D_1bkod")
 
 [node name="state_machine" type="Node" parent="." unique_id=1699407386 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_fvtld")
-initial_state = NodePath("playerIdle")
+initial_state = NodePath("idle")
 
-[node name="playerIdle" type="Node" parent="state_machine" unique_id=1076121951 node_paths=PackedStringArray("player")]
+[node name="idle" type="Node" parent="state_machine" unique_id=1076121951 node_paths=PackedStringArray("player")]
 script = ExtResource("5_s4jxa")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://cvrlvfqut7jqp"
 
-[node name="playerMovement" type="Node" parent="state_machine" unique_id=1210722751 node_paths=PackedStringArray("player")]
+[node name="movement" type="Node" parent="state_machine" unique_id=1210722751 node_paths=PackedStringArray("player")]
 script = ExtResource("4_ct4mp")
 player = NodePath("../..")
 hitbox_offset = 15.0
 metadata/_custom_type_script = "uid://bwvoyha86ca4h"
 
-[node name="playerJump" type="Node" parent="state_machine" unique_id=1225700253 node_paths=PackedStringArray("player")]
+[node name="jump" type="Node" parent="state_machine" unique_id=1225700253 node_paths=PackedStringArray("player")]
 script = ExtResource("6_oh5ij")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://34v1rx2q4sa"
 
-[node name="playerPunch" type="Node" parent="state_machine" unique_id=767040315 node_paths=PackedStringArray("player")]
+[node name="punch" type="Node" parent="state_machine" unique_id=767040315 node_paths=PackedStringArray("player")]
 script = ExtResource("7_hp4bs")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://dt65fdxii0awn"
+
+[node name="hurt" type="Node" parent="state_machine" unique_id=995920287 node_paths=PackedStringArray("player")]
+script = ExtResource("10_ml7e8")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://fd3lxvrvp46h"
+
+[node name="death" type="Node" parent="state_machine" unique_id=2002385063 node_paths=PackedStringArray("player")]
+script = ExtResource("11_ihjo1")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://cshdfkknos78m"
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

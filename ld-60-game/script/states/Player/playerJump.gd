@@ -12,7 +12,10 @@ func Enter():
 
 
 func Physics_Update(delta: float) -> void:
+	if player.hit == true:
+		Transitioned.emit(self, "hurt")
+		
 	if player.velocity.y !=0:
 		player.velocity.y += gravity * delta
 	if player.velocity.y == 0:
-		Transitioned.emit(self, "playerIdle")
+		Transitioned.emit(self, "idle")

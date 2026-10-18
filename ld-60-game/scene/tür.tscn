@@ -24,6 +24,8 @@ script/source = "extends CollisionShape2D
 "
 
 [node name="TÜR" type="StaticBody2D" unique_id=785221569]
+collision_layer = 2
+collision_mask = 13
 script = ExtResource("1_ofbfx")
 
 [node name="TÜR_coll" type="CollisionShape2D" parent="." unique_id=531149740]

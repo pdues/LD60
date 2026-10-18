@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://cime8j068iebh"]
+
+[ext_resource type="Script" uid="uid://ci3rdym5rhinp" path="res://script/weapon_stats.gd" id="1_4kaoe"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "BasicEnemyDmg"
+script = ExtResource("1_4kaoe")
+display_name = &"EnemyDmg"
+metadata/_custom_type_script = "uid://ci3rdym5rhinp"

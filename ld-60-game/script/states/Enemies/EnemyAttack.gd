@@ -8,7 +8,7 @@ class_name EnemyAttack
 var player : CharacterBody2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var attack_cd := 1.0
+var attack_duration := 0.5
 var attack_timer := 0.0
 
 func Enter():
@@ -16,16 +16,15 @@ func Enter():
 	attack_timer = 0.0
 	print("attacking")
 	player = get_tree().get_first_node_in_group("Player")
-	enemy.velocity = Vector2(0.0, 0.0)
+	hitbox_attack.disabled = false
 	
 func Exit():
-	hitbox_attack.disabled = true	
+	hitbox_attack.disabled = true
 	
 func Physics_Update(delta: float):
-	if attack_timer > 0.2:
-		hitbox_attack.disabled = false
-	if attack_timer > 0.8:
-		hitbox_attack.disabled = true
-	if attack_timer >= attack_cd:
-		Transitioned.emit(self, "idle")
+	if enemy.hit == true:
+		Transitioned.emit(self, "hurt")
+	
+	if attack_timer >= attack_duration:
+		Transitioned.emit(self, "rest")
 	attack_timer += delta

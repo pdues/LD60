@@ -11,6 +11,8 @@ polygon = PackedVector2Array(-16, -22, -16, 31, 26, 30, 26, -21)
 
 [node name="Hindernis" type="StaticBody2D" unique_id=1907527197]
 position = Vector2(-6, 30)
+collision_layer = 2
+collision_mask = 13
 script = ExtResource("1_6m4q0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=396854861]
@@ -19,6 +21,8 @@ scale = Vector2(0.32031247, 0.3984375)
 texture = ExtResource("2_dth7p")
 
 [node name="Hind_Area" type="Area2D" parent="." unique_id=1627175906]
+collision_layer = 2
+collision_mask = 4
 
 [node name="Hind_Area_Coll" type="CollisionShape2D" parent="Hind_Area" unique_id=1213878491]
 position = Vector2(0.9999999, 1)

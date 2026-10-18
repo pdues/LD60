@@ -17,6 +17,8 @@ size = Vector2(20, 18)
 polygon = PackedVector2Array(-11, -12, 11, -12, 11, 8, -11, 8)
 
 [node name="lichttür" type="StaticBody2D" unique_id=785221569]
+collision_layer = 2
+collision_mask = 13
 script = ExtResource("1_v8h5v")
 
 [node name="TÜR_coll" type="CollisionShape2D" parent="." unique_id=531149740]
