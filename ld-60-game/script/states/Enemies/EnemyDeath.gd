@@ -5,5 +5,7 @@ class_name EnemyDeath
 
 func Enter():
 	print("dead")
-	#play death animation
-	enemy.queue_free()
+	enemy.sprite.play("dead")
+	enemy.set_collision_layer_value(4,false)
+	enemy.set_collision_mask_value(3,false)
+	enemy.lamp.enabled = false
