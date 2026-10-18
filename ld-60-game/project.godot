@@ -25,8 +25,9 @@ window/stretch/aspect="expand"
 [global_group]
 
 Player=""
-Hitbox=""
 Enemy=""
+Hitbox=""
+Lichtray=""
 pickup=""
 
 [layer_names]
@@ -35,6 +36,7 @@ pickup=""
 2d_physics/layer_2="Objects"
 2d_physics/layer_3="Player"
 2d_physics/layer_4="Enemies"
+2d_physics/layer_5="Light"
 
 [physics]
 

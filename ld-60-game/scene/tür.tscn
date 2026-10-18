@@ -114,6 +114,8 @@ sdf_collision = false
 
 [node name="Lock1" type="Area2D" parent="." unique_id=1689997404]
 position = Vector2(148, 130)
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("3_ofbfx")
 
 [node name="Lock1_Texture" type="Sprite2D" parent="Lock1" unique_id=1680509241]
@@ -132,6 +134,8 @@ occluder_light_mask = 0
 
 [node name="Lock2" type="Area2D" parent="." unique_id=441791105]
 position = Vector2(182.87279, 130.07077)
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("3_ofbfx")
 
 [node name="Lock1_Texture" type="Sprite2D" parent="Lock2" unique_id=199635027]
@@ -150,6 +154,8 @@ occluder_light_mask = 0
 
 [node name="Lock3" type="Area2D" parent="." unique_id=1101672520]
 position = Vector2(217, 130)
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("3_ofbfx")
 
 [node name="Lock1_Texture" type="Sprite2D" parent="Lock3" unique_id=1575766291]
@@ -168,6 +174,8 @@ occluder_light_mask = 0
 
 [node name="Lock4" type="Area2D" parent="." unique_id=743432560]
 position = Vector2(251.12721, 129.92923)
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("3_ofbfx")
 
 [node name="Lock1_Texture" type="Sprite2D" parent="Lock4" unique_id=232339853]

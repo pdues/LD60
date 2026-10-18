@@ -112,6 +112,8 @@ fill_from = Vector2(0.4826087, 0.47391304)
 
 [node name="lichttür" type="StaticBody2D" unique_id=785221569]
 z_index = -100
+collision_layer = 2
+collision_mask = 12
 script = ExtResource("1_7s0rl")
 
 [node name="TÜR_coll" type="CollisionShape2D" parent="." unique_id=531149740]
@@ -130,6 +132,8 @@ texture = ExtResource("2_u7ybv")
 
 [node name="Lock1" type="Area2D" parent="." unique_id=1689997404]
 position = Vector2(-129, 112)
+collision_layer = 2
+collision_mask = 16
 script = ExtResource("3_pcrwl")
 
 [node name="Lock1_Asprite" type="AnimatedSprite2D" parent="Lock1" unique_id=1683559049]

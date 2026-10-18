@@ -17,6 +17,8 @@ fill = 1
 fill_from = Vector2(0.4826087, 0.47391304)
 
 [node name="pickup" type="Area2D" unique_id=1020326846 groups=["pickup"]]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_x228r")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1184688817]
