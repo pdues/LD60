@@ -109,6 +109,30 @@ physics_layer_0/collision_mask = 7
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_hjkxd")
 sources/0 = SubResource("TileSetAtlasSource_8pvpx")
 
+[sub_resource type="Resource" id="Resource_ma57r"]
+resource_local_to_scene = true
+resource_name = "EnemyStats"
+script = ExtResource("10_pfv2s")
+max_health = 5
+current_health = 5
+metadata/_custom_type_script = "uid://d22ir26i1nexq"
+
+[sub_resource type="Resource" id="Resource_4nof5"]
+resource_local_to_scene = true
+resource_name = "EnemyStats"
+script = ExtResource("10_pfv2s")
+max_health = 5
+current_health = 5
+metadata/_custom_type_script = "uid://d22ir26i1nexq"
+
+[sub_resource type="Resource" id="Resource_skiai"]
+resource_local_to_scene = true
+resource_name = "EnemyStats"
+script = ExtResource("10_pfv2s")
+max_health = 5
+current_health = 5
+metadata/_custom_type_script = "uid://d22ir26i1nexq"
+
 [sub_resource type="Resource" id="Resource_4ayjn"]
 resource_local_to_scene = true
 resource_name = "EnemyStats"
@@ -117,35 +141,11 @@ max_health = 5
 current_health = 5
 metadata/_custom_type_script = "uid://d22ir26i1nexq"
 
-[sub_resource type="Resource" id="Resource_pq1ja"]
-resource_local_to_scene = true
-resource_name = "EnemyStats"
-script = ExtResource("10_pfv2s")
-max_health = 5
-current_health = 5
-metadata/_custom_type_script = "uid://d22ir26i1nexq"
-
-[sub_resource type="Resource" id="Resource_31vet"]
-resource_local_to_scene = true
-resource_name = "EnemyStats"
-script = ExtResource("10_pfv2s")
-max_health = 5
-current_health = 5
-metadata/_custom_type_script = "uid://d22ir26i1nexq"
-
-[sub_resource type="Resource" id="Resource_dcrep"]
-resource_local_to_scene = true
-resource_name = "EnemyStats"
-script = ExtResource("10_pfv2s")
-max_health = 5
-current_health = 5
-metadata/_custom_type_script = "uid://d22ir26i1nexq"
-
-[node name="Node2D" type="Node2D" unique_id=1179242632]
+[node name="Node2D2" type="Node2D" unique_id=1179242632]
 
 [node name="player" parent="." unique_id=963260103 node_paths=PackedStringArray("respawnpoint") instance=ExtResource("1_a3hhw")]
 z_index = 11
-position = Vector2(1476, 49)
+position = Vector2(51, 128)
 respawnpoint = NodePath("../respawnpoint_begin")
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=329846752]
@@ -198,19 +198,19 @@ position = Vector2(421, 144)
 
 [node name="StandardEnemy" parent="." unique_id=1837803404 instance=ExtResource("9_8pvpx")]
 position = Vector2(1208, -119)
-stats = SubResource("Resource_4ayjn")
+stats = SubResource("Resource_ma57r")
 
 [node name="StandardEnemy2" parent="." unique_id=1169780697 instance=ExtResource("9_8pvpx")]
 position = Vector2(1055, 220)
-stats = SubResource("Resource_pq1ja")
+stats = SubResource("Resource_4nof5")
 
 [node name="StandardEnemy3" parent="." unique_id=1526519585 instance=ExtResource("9_8pvpx")]
 position = Vector2(1395, 213)
-stats = SubResource("Resource_31vet")
+stats = SubResource("Resource_skiai")
 
 [node name="StandardEnemy4" parent="." unique_id=2017269418 instance=ExtResource("9_8pvpx")]
 position = Vector2(1601, 208)
-stats = SubResource("Resource_dcrep")
+stats = SubResource("Resource_4ayjn")
 
 [node name="respawnpoint_afterdoor" parent="." unique_id=1180942153 instance=ExtResource("11_2d2cv")]
 position = Vector2(1432, 140)
