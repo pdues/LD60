@@ -1,5 +1,5 @@
 extends State
-class_name playerMovement
+class_name PlayerMovement
 
 @export var player: CharacterBody2D
 @export var MOVESPEED: float = 100.0

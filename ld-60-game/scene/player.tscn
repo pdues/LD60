@@ -236,11 +236,11 @@ animation = &"Idle_right"
 autoplay = "Idle_right"
 
 [node name="hitbox_punch" type="Area2D" parent="." unique_id=1215043374]
+visible = false
 collision_layer = 4
 collision_mask = 10
 script = ExtResource("3_2fvbb")
 weapon_stats = SubResource("Resource_aliaw")
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_punch" unique_id=222129076 groups=["Hitbox"]]
 position = Vector2(15, -3)
@@ -296,7 +296,7 @@ script = ExtResource("11_ihjo1")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://cshdfkknos78m"
 
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
-
 [node name="Licht" parent="." unique_id=361559328 instance=ExtResource("2_2fvbb")]
 position = Vector2(1, 6)
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

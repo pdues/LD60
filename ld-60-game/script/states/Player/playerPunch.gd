@@ -1,5 +1,5 @@
 extends State
-class_name playerPunch
+class_name PlayerPunch
 
 @onready var hitbox_punch: CollisionShape2D
 @export var player: CharacterBody2D

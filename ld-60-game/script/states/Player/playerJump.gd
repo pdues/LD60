@@ -1,5 +1,5 @@
 extends State
-class_name playerJump
+class_name PlayerJump
 
 @export var player: CharacterBody2D
 @export var JUMPHEIGHT: float = -400.0

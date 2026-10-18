@@ -1,5 +1,5 @@
 extends State
-class_name playerIdle
+class_name PlayerIdle
 
 @export var player: CharacterBody2D
 @onready var animated_sprite = player.get_child(1)
