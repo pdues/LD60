@@ -17,11 +17,11 @@ func Physics_Update(_delta: float):
 		Transitioned.emit(self, "hurt")
 	
 	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction !=0:
+	if direction !=0 || Input.is_action_just_pressed("ui_up"):
 		Transitioned.emit(self, "movement")
 		
-	if Input.is_action_just_pressed("ui_up") and player.is_on_floor():
-		Transitioned.emit(self, "jump")
+	#if Input.is_action_just_pressed("ui_up") and player.is_on_floor():
+		#Transitioned.emit(self, "jump")
 	if Input.is_action_just_pressed("ui_select"):
 		Transitioned.emit(self, "punch")
 		
