@@ -22,6 +22,7 @@ animations = [{
 radius = 8.062258
 
 [node name="leiche" type="CharacterBody2D" unique_id=852284175]
+modulate = Color(1.5565991, 1.5565991, 1.5565991, 1)
 collision_layer = 0
 script = ExtResource("1_42gkj")
 

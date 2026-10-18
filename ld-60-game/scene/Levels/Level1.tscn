@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://clmqs0htgk6c6" path="res://assets/TILEMAP.png" id="6_hjkxd"]
 [ext_resource type="Script" uid="uid://d22ir26i1nexq" path="res://script/object_stats.gd" id="6_vr3a4"]
 [ext_resource type="PackedScene" uid="uid://bhqxkbrokoyna" path="res://scene/respawnpoint.tscn" id="8_vr3a4"]
+[ext_resource type="Texture2D" uid="uid://c5nxkxhdvvxpk" path="res://assets/Paralaxe0_höhle.png" id="9_no78e"]
+[ext_resource type="Texture2D" uid="uid://bdtmedyispw7l" path="res://assets/Paralaxe2_höhle.png" id="10_ljtdq"]
+[ext_resource type="Texture2D" uid="uid://d3jejadj4w83l" path="res://assets/Paralaxe1_höhle.png" id="11_wop3v"]
 
 [sub_resource type="Gradient" id="Gradient_ll5lq"]
 offsets = PackedFloat32Array(0, 0.32, 1)
@@ -19,7 +22,7 @@ metadata/_snap_count = 100
 gradient = SubResource("Gradient_ll5lq")
 fill_to = Vector2(0.06521739, 0.073913045)
 
-[sub_resource type="Resource" id="Resource_vr3a4"]
+[sub_resource type="Resource" id="Resource_lc31b"]
 resource_local_to_scene = true
 resource_name = "EnemyStats"
 script = ExtResource("6_vr3a4")
@@ -144,7 +147,7 @@ texture = SubResource("GradientTexture2D_oj781")
 [node name="Camera2D#CanvasModulate" type="CanvasModulate" parent="player/Camera2D" unique_id=1569812563]
 z_index = -100
 position = Vector2(-133, -115)
-color = Color(0.1991826, 0.1991826, 0.1991826, 1)
+color = Color(0.14739363, 0.14739363, 0.14739363, 1)
 
 [node name="TÜR" parent="." unique_id=785221569 instance=ExtResource("3_oj781")]
 position = Vector2(1218, -10)
@@ -170,7 +173,7 @@ position = Vector2(1023, 123)
 
 [node name="StandardEnemy" parent="." unique_id=1837803404 instance=ExtResource("5_m3dbj")]
 position = Vector2(943, 149)
-stats = SubResource("Resource_vr3a4")
+stats = SubResource("Resource_lc31b")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=643946628]
 texture_filter = 1
@@ -250,3 +253,45 @@ texture_scale = 4.27
 [node name="respawnpoint" parent="." unique_id=1180942153 instance=ExtResource("8_vr3a4")]
 position = Vector2(89, 140)
 on = 1
+
+[node name="parallaxe" type="Node2D" parent="." unique_id=666437462]
+z_index = -100
+z_as_relative = false
+position = Vector2(133, 144)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="parallaxe" unique_id=634140953]
+
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="parallaxe/ParallaxBackground" unique_id=1915515613]
+modulate = Color(0.7505669, 0.7505669, 0.7505669, 1)
+position = Vector2(152, 45)
+scale = Vector2(1, 2)
+motion_scale = Vector2(0.3, 0.225)
+motion_mirroring = Vector2(610, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="parallaxe/ParallaxBackground/ParallaxLayer1" unique_id=400659917]
+position = Vector2(-27, 11.750008)
+scale = Vector2(0.95277774, 0.9375)
+texture = ExtResource("9_no78e")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="parallaxe/ParallaxBackground" unique_id=1899171340]
+modulate = Color(0.8848981, 0.8848981, 0.8848981, 1)
+position = Vector2(101, 94)
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(605, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="parallaxe/ParallaxBackground/ParallaxLayer" unique_id=1638728316]
+position = Vector2(0, 8.000002)
+scale = Vector2(1, 0.67777777)
+texture = ExtResource("10_ljtdq")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="parallaxe/ParallaxBackground" unique_id=472492177]
+modulate = Color(0.39723974, 0.39723974, 0.39723974, 1)
+position = Vector2(154, 99)
+motion_scale = Vector2(1, 0.76)
+motion_mirroring = Vector2(605, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="parallaxe/ParallaxBackground/ParallaxLayer2" unique_id=1564652769]
+modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
+position = Vector2(1, -24.499989)
+scale = Vector2(1, 0.64166665)
+texture = ExtResource("11_wop3v")
