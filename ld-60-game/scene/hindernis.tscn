@@ -67,4 +67,4 @@ scale = Vector2(0.99999994, 1)
 occluder = SubResource("OccluderPolygon2D_1bkod")
 sdf_collision = false
 
-[connection signal="body_entered" from="Hind_Area" to="." method="_on_hind_area_body_entered"]
+[connection signal="area_entered" from="Hind_Area" to="." method="_on_hind_area_area_entered"]

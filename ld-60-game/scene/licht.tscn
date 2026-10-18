@@ -86,7 +86,6 @@ shape = SubResource("RectangleShape2D_7debn")
 disabled = true
 
 [node name="pickup_area" type="Area2D" parent="." unique_id=685538854]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pickup_area" unique_id=1693175276]
 scale = Vector2(1.5, 1.5)
