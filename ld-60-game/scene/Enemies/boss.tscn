@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://lgktiyao3klo"]
+
+[ext_resource type="Script" uid="uid://b0c5re34ov6m3" path="res://script/Enemies/boss.gd" id="1_lmix8"]
+[ext_resource type="Texture2D" uid="uid://b3nrl06y7aimw" path="res://icon.svg" id="2_ko00d"]
+[ext_resource type="Script" uid="uid://dt5flil8qjm4a" path="res://script/hurtbox.gd" id="3_wectw"]
+[ext_resource type="Script" uid="uid://5peq5aw5j0f3" path="res://script/states/Enemies/Boss/BossStart.gd" id="5_wectw"]
+[ext_resource type="Script" uid="uid://spu474uaedmi" path="res://script/states/Enemies/Boss/Alive/BossAlive.gd" id="6_esv6b"]
+[ext_resource type="Script" uid="uid://c8t4qpa7rykw5" path="res://script/states/Enemies/Boss/Alive/BossPhase.gd" id="7_dlumj"]
+[ext_resource type="Script" uid="uid://cjflv2die5dnn" path="res://script/states/Enemies/Boss/BossDeath.gd" id="7_e6ho8"]
+[ext_resource type="Script" uid="uid://b8kitk7f0mfx7" path="res://script/states/Enemies/Boss/Alive/Chill/BossChill.gd" id="8_esv6b"]
+[ext_resource type="Script" uid="uid://d4bu6x81ni3m2" path="res://script/states/Enemies/Boss/Alive/Chill/BossRest.gd" id="9_l0vgi"]
+[ext_resource type="Script" uid="uid://ddqngt70rrdwn" path="res://script/states/Enemies/Boss/Alive/Chill/BossChase.gd" id="10_0aof4"]
+[ext_resource type="Script" uid="uid://bext5xdjl6kg4" path="res://script/states/Enemies/Boss/Alive/Attack/BossAttack.gd" id="11_dlumj"]
+[ext_resource type="Script" uid="uid://bamoa488lqdlx" path="res://script/states/Enemies/Boss/Alive/Attack/BossMelee1.gd" id="12_dlumj"]
+[ext_resource type="Script" uid="uid://cli0rgqjatjtl" path="res://script/states/Enemies/Boss/Alive/BossTransition.gd" id="12_l0vgi"]
+[ext_resource type="Script" uid="uid://8ta7oy8sgr5k" path="res://script/states/Enemies/Boss/Alive/Attack/BossMelee2.gd" id="13_dlumj"]
+[ext_resource type="Script" uid="uid://b85xk7c3x77t1" path="res://script/states/Enemies/Boss/Alive/Attack/BossAoE.gd" id="14_wu6rk"]
+[ext_resource type="Script" uid="uid://cslaq6x7genxl" path="res://script/states/HFSM/HFSM.gd" id="17_wu6rk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aliaw"]
+size = Vector2(84, 112)
+
+[node name="Boss" type="CharacterBody2D" unique_id=1121860251]
+script = ExtResource("1_lmix8")
+stopping_speed = 2.0
+max_attack_range = 50.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1718153696]
+scale = Vector2(0.65625, 0.875)
+texture = ExtResource("2_ko00d")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=424362969]
+script = ExtResource("3_wectw")
+metadata/_custom_type_script = "uid://dt5flil8qjm4a"
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox" unique_id=1345153662]
+shape = SubResource("RectangleShape2D_aliaw")
+
+[node name="HFSM" type="Node" parent="." unique_id=1474652291 node_paths=PackedStringArray("boss", "start_state")]
+script = ExtResource("17_wu6rk")
+boss = NodePath("..")
+start_state = NodePath("start")
+metadata/_custom_type_script = "uid://cslaq6x7genxl"
+
+[node name="start" type="Node" parent="HFSM" unique_id=1336546096 node_paths=PackedStringArray("alive_state")]
+script = ExtResource("5_wectw")
+alive_state = NodePath("../alive")
+metadata/_custom_type_script = "uid://5peq5aw5j0f3"
+
+[node name="alive" type="Node" parent="HFSM" unique_id=63760572 node_paths=PackedStringArray("phase1_state", "transition_state", "phase2_state")]
+script = ExtResource("6_esv6b")
+phase1_state = NodePath("phase1")
+transition_state = NodePath("transition")
+phase2_state = NodePath("phase2")
+metadata/_custom_type_script = "uid://spu474uaedmi"
+
+[node name="phase1" type="Node" parent="HFSM/alive" unique_id=1679532442 node_paths=PackedStringArray("chill_state", "attack_state")]
+script = ExtResource("7_dlumj")
+chill_state = NodePath("chill")
+attack_state = NodePath("attack")
+initial_child = NodePath("chill/chase")
+metadata/_custom_type_script = "uid://c8t4qpa7rykw5"
+
+[node name="chill" type="Node" parent="HFSM/alive/phase1" unique_id=1590690610 node_paths=PackedStringArray("rest_state", "chase_state")]
+script = ExtResource("8_esv6b")
+rest_state = NodePath("rest")
+chase_state = NodePath("chase")
+metadata/_custom_type_script = "uid://b8kitk7f0mfx7"
+
+[node name="rest" type="Node" parent="HFSM/alive/phase1/chill" unique_id=1393139214 node_paths=PackedStringArray("phase1_state")]
+script = ExtResource("9_l0vgi")
+phase1_state = NodePath("../..")
+rest_time = 2.0
+metadata/_custom_type_script = "uid://d4bu6x81ni3m2"
+
+[node name="chase" type="Node" parent="HFSM/alive/phase1/chill" unique_id=727559982 node_paths=PackedStringArray("phase1_state")]
+script = ExtResource("10_0aof4")
+phase1_state = NodePath("../..")
+chase_time = 10.0
+metadata/_custom_type_script = "uid://ddqngt70rrdwn"
+
+[node name="attack" type="Node" parent="HFSM/alive/phase1" unique_id=55066538 node_paths=PackedStringArray("melee1_state", "melee2_state", "AoE_state")]
+script = ExtResource("11_dlumj")
+melee1_state = NodePath("melee1")
+melee2_state = NodePath("melee2")
+AoE_state = NodePath("AoE")
+metadata/_custom_type_script = "uid://bext5xdjl6kg4"
+
+[node name="melee1" type="Node" parent="HFSM/alive/phase1/attack" unique_id=429708689]
+script = ExtResource("12_dlumj")
+metadata/_custom_type_script = "uid://bamoa488lqdlx"
+
+[node name="melee2" type="Node" parent="HFSM/alive/phase1/attack" unique_id=1322018765]
+script = ExtResource("13_dlumj")
+metadata/_custom_type_script = "uid://8ta7oy8sgr5k"
+
+[node name="AoE" type="Node" parent="HFSM/alive/phase1/attack" unique_id=1003267897]
+script = ExtResource("14_wu6rk")
+metadata/_custom_type_script = "uid://b85xk7c3x77t1"
+
+[node name="transition" type="Node" parent="HFSM/alive" unique_id=121049620]
+script = ExtResource("12_l0vgi")
+metadata/_custom_type_script = "uid://cli0rgqjatjtl"
+
+[node name="phase2" type="Node" parent="HFSM/alive" unique_id=1201893921]
+script = ExtResource("7_dlumj")
+metadata/_custom_type_script = "uid://c8t4qpa7rykw5"
+
+[node name="chill" type="Node" parent="HFSM/alive/phase2" unique_id=1602595894]
+script = ExtResource("8_esv6b")
+metadata/_custom_type_script = "uid://b8kitk7f0mfx7"
+
+[node name="rest" type="Node" parent="HFSM/alive/phase2/chill" unique_id=1036466261]
+script = ExtResource("9_l0vgi")
+metadata/_custom_type_script = "uid://d4bu6x81ni3m2"
+
+[node name="chase" type="Node" parent="HFSM/alive/phase2/chill" unique_id=614809797]
+script = ExtResource("10_0aof4")
+metadata/_custom_type_script = "uid://ddqngt70rrdwn"
+
+[node name="attack" type="Node" parent="HFSM/alive/phase2" unique_id=1896542355]
+script = ExtResource("11_dlumj")
+metadata/_custom_type_script = "uid://bext5xdjl6kg4"
+
+[node name="melee1" type="Node" parent="HFSM/alive/phase2/attack" unique_id=1322388817]
+script = ExtResource("12_dlumj")
+metadata/_custom_type_script = "uid://bamoa488lqdlx"
+
+[node name="melee2" type="Node" parent="HFSM/alive/phase2/attack" unique_id=1424169972]
+script = ExtResource("13_dlumj")
+metadata/_custom_type_script = "uid://8ta7oy8sgr5k"
+
+[node name="death" type="Node" parent="HFSM" unique_id=378459121]
+script = ExtResource("7_e6ho8")
+metadata/_custom_type_script = "uid://cjflv2die5dnn"
