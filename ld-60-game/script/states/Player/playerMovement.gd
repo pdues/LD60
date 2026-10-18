@@ -3,6 +3,7 @@ class_name PlayerMovement
 
 @export var player: CharacterBody2D
 @export var MOVESPEED: float = 100.0
+@export var JUMPHEIGHT: float = -300.0
 @export var hitbox_offset : float
 @onready var animated_sprite = player.get_child(1)
 @onready var licht = $"../../Licht"
@@ -16,19 +17,26 @@ func Physics_Update(_delta: float) -> void:
 		Transitioned.emit(self, "hurt")
 		
 	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction < 0:
+	if direction < 0 and player.is_on_floor():
 		animated_sprite.play("run_left")
 		player.dir ="left"
 		licht.dir = "left"
-	elif direction > 0:
+	elif direction > 0 and player.is_on_floor():
 		animated_sprite.play("run_right")
 		player.dir ="right"
 		licht.dir ="right"
-	if direction == 0:
+	elif player.dir =="left" and player.velocity.y != 0.0:
+		animated_sprite.play("jump_left")
+	elif player.dir =="right" and player.velocity.y != 0.0:
+		animated_sprite.play("jump_right")
+	
+	if player.velocity == Vector2(0.0,0.0) and not Input.is_action_pressed("ui_up"):
 		Transitioned.emit(self, "idle")
-		return
-	if Input.is_action_just_pressed("ui_up") and player.is_on_floor():
-		Transitioned.emit(self, "jump")
+		
+	
+	if Input.is_action_pressed("ui_up") and player.is_on_floor():
+		player.velocity.y = JUMPHEIGHT
+		
 	if Input.is_action_just_pressed("ui_select"):
 		Transitioned.emit(self, "punch")
 	
