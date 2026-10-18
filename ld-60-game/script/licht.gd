@@ -4,7 +4,8 @@ var toggle = 0
 var time_elapsed = 3.0
 var time = 0.0
 var normal_lich
-@export var dir = ""
+@onready var pickup = 0
+@export var dir = "right"
 var hitbox_offset  =15.0
 
 func _physics_process(delta: float) -> void:
@@ -16,7 +17,7 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	time += delta
 
-	if Input.is_physical_key_pressed(KEY_G) and time > time_elapsed:
+	if Input.is_physical_key_pressed(KEY_G) and time > time_elapsed and pickup == 1:
 		$normal_schirm.hide()
 		$normal_licht.hide()
 		$beam_schirm.show()
@@ -34,4 +35,11 @@ func _process(delta: float) -> void:
 		$beam_ray.hide()
 		$beam_ray/beam_collider.set_deferred("disabled",true)
 		toggle = 0
+		
+
+
+func _on_pickup_area_area_entered(area: Area2D) -> void:
+	print("in")
+	if area.is_in_group("pickup") == true:
+		pickup = 1
 		

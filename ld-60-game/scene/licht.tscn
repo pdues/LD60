@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://2djpfmqymc64" path="res://script/licht.gd" id="1_mwudh"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1bkod"]
-polygon = PackedVector2Array(-0.09829718, -0.2877803, -0.39318871, -0.2877803, -0.5897831, -0.09592677, -0.39318871, 0.09592677, 0.19659436, 0.09592677, -0.4914859, 0.19185355, -0.9829717, -0.09592677, -0.4914859, -0.38370708, 0, -0.38370708)
+polygon = PackedVector2Array(0.19659436, -0.2877803, -0.39318871, -0.2877803, -0.5897831, -0.09592677, -0.39318871, 0.09592677, 0.19659436, 0.09592677, -0.4914859, 0.19185355, -0.9829717, -0.09592677, -0.4914859, -0.38370708)
 
 [sub_resource type="Gradient" id="Gradient_1sw0b"]
+offsets = PackedFloat32Array(0.11290322, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 metadata/_snap_enabled = true
 metadata/_snap_count = 62
@@ -31,6 +32,8 @@ fill_to = Vector2(0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7debn"]
 size = Vector2(310, 31)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1bkod"]
+
 [node name="Licht" type="Node2D" unique_id=361559328]
 script = ExtResource("1_mwudh")
 
@@ -45,7 +48,7 @@ sdf_collision = false
 position = Vector2(7, 0)
 scale = Vector2(4.561807, 4.6880636)
 color = Color(1, 1, 0.22352941, 1)
-energy = 1.2
+energy = 1.1
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 2
@@ -66,7 +69,7 @@ visible = false
 position = Vector2(7, 0)
 scale = Vector2(10.173233, 0.3339695)
 color = Color(1, 1, 0.22352941, 1)
-energy = 4.0
+energy = 1.01
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 2
@@ -81,3 +84,12 @@ visible = false
 position = Vector2(159, -0.5)
 shape = SubResource("RectangleShape2D_7debn")
 disabled = true
+
+[node name="pickup_area" type="Area2D" parent="." unique_id=685538854]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickup_area" unique_id=1693175276]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_1bkod")
+
+[connection signal="area_entered" from="pickup_area" to="." method="_on_pickup_area_area_entered"]

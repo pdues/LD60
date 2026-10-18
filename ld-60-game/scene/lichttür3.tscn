@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://k0t2t8cy6n2e"]
+
+[ext_resource type="Script" uid="uid://bfjop117dtao6" path="res://script/lichttür.gd" id="1_7s0rl"]
+[ext_resource type="Texture2D" uid="uid://ulufer6iumfd" path="res://assets/tür.png" id="2_u7ybv"]
+[ext_resource type="Script" uid="uid://dlfsy2xpmstrr" path="res://script/lichtlock.gd" id="3_pcrwl"]
+[ext_resource type="Texture2D" uid="uid://dm65skqbmafx2" path="res://assets/lightlock.png" id="4_degph"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bkod"]
+size = Vector2(20, 87)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1bkod"]
+closed = false
+cull_mode = 1
+polygon = PackedVector2Array(0, -29, 2, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve8x0"]
+atlas = ExtResource("4_degph")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8b3rx"]
+atlas = ExtResource("4_degph")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1bkod"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ve8x0")
+}],
+"loop": 0,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8b3rx")
+}],
+"loop": 1,
+"name": &"on",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofbfx"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7debn"]
+polygon = PackedVector2Array(-6, -12, 6, -12, 10, -8, 10, 4, 6, 8, -6.1907425, 8.000001, -10, 4, -10.000001, -7.9183817)
+
+[sub_resource type="Animation" id="Animation_ryy88"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TÜR_coll:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(300, 115)]
+}
+
+[sub_resource type="Animation" id="Animation_ve8x0"]
+resource_name = "door lock"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TÜR_coll:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(180, 75), Vector2(178, 136)]
+}
+
+[sub_resource type="Animation" id="Animation_8b3rx"]
+resource_name = "door slide"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TÜR_coll:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(179.00002, 133), Vector2(181.00002, 74)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m05yr"]
+_data = {
+&"RESET": SubResource("Animation_ryy88"),
+&"door lock": SubResource("Animation_ve8x0"),
+&"door slide": SubResource("Animation_8b3rx")
+}
+
+[sub_resource type="Gradient" id="Gradient_ryy88"]
+offsets = PackedFloat32Array(0.030120483, 0.2, 0.46, 1)
+colors = PackedColorArray(0.9027778, 0.9027778, 0.9027778, 1, 0.22539008, 0.22539008, 0.22539008, 1, 0.061982274, 0.061982274, 0.061982274, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 100
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ve8x0"]
+gradient = SubResource("Gradient_ryy88")
+fill = 1
+fill_from = Vector2(0.4826087, 0.47391304)
+
+[node name="lichttür" type="StaticBody2D" unique_id=785221569]
+z_index = -100
+script = ExtResource("1_7s0rl")
+
+[node name="TÜR_coll" type="CollisionShape2D" parent="." unique_id=531149740]
+position = Vector2(300, 115)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_1bkod")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="TÜR_coll" unique_id=1003755194]
+occluder = SubResource("OccluderPolygon2D_1bkod")
+
+[node name="TÜR_Sprite" type="Sprite2D" parent="TÜR_coll" unique_id=864872337]
+texture_filter = 1
+position = Vector2(-7.6293945e-06, 7.0000014)
+scale = Vector2(1.1249988, 1.4583335)
+texture = ExtResource("2_u7ybv")
+
+[node name="Lock1" type="Area2D" parent="." unique_id=1689997404]
+position = Vector2(-129, 112)
+script = ExtResource("3_pcrwl")
+
+[node name="Lock1_Asprite" type="AnimatedSprite2D" parent="Lock1" unique_id=1683559049]
+texture_filter = 1
+position = Vector2(1, -3)
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_1bkod")
+animation = &"off"
+
+[node name="Lock1_Collider" type="CollisionShape2D" parent="Lock1" unique_id=1231132685]
+position = Vector2(1, -3)
+shape = SubResource("RectangleShape2D_ofbfx")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Lock1" unique_id=1874534859]
+position = Vector2(1, -1)
+occluder = SubResource("OccluderPolygon2D_7debn")
+occluder_light_mask = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=366756949]
+libraries/ = SubResource("AnimationLibrary_m05yr")
+
+[node name="PointLight2D1" type="PointLight2D" parent="." unique_id=1208085763]
+z_index = 10
+position = Vector2(-125.999985, 113)
+scale = Vector2(0.874561, 0.8502676)
+color = Color(0.32156864, 0.7647059, 0.24705882, 1)
+energy = 0.73
+texture = SubResource("GradientTexture2D_ve8x0")
+offset = Vector2(5, 5)
+texture_scale = 4.27
+
+[connection signal="area_entered" from="Lock1" to="Lock1" method="_on_area_entered"]

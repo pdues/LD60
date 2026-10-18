@@ -9,7 +9,9 @@
 size = Vector2(20, 87)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1bkod"]
-polygon = PackedVector2Array(-10, -43, 10, -43, 10, 43, -9, 43)
+closed = false
+cull_mode = 1
+polygon = PackedVector2Array(1, -48, 2, 43)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ve8x0"]
 atlas = ExtResource("4_ryy88")
@@ -43,6 +45,71 @@ animations = [{
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7debn"]
 polygon = PackedVector2Array(-6, -12, 6, -12, 10, -8, 10, 4, 6, 8, -6.1907425, 8.000001, -10, 4, -10.000001, -7.9183817)
 
+[sub_resource type="Animation" id="Animation_ryy88"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TÜR_coll:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(300, 115)]
+}
+
+[sub_resource type="Animation" id="Animation_ve8x0"]
+resource_name = "door lock"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TÜR_coll:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(180, 75), Vector2(178, 136)]
+}
+
+[sub_resource type="Animation" id="Animation_8b3rx"]
+resource_name = "door slide"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TÜR_coll:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(179.00002, 133), Vector2(181.00002, 74)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m05yr"]
+_data = {
+&"RESET": SubResource("Animation_ryy88"),
+&"door lock": SubResource("Animation_ve8x0"),
+&"door slide": SubResource("Animation_8b3rx")
+}
+
+[sub_resource type="Gradient" id="Gradient_ryy88"]
+offsets = PackedFloat32Array(0.030120483, 0.2, 0.46, 1)
+colors = PackedColorArray(0.9027778, 0.9027778, 0.9027778, 1, 0.22539008, 0.22539008, 0.22539008, 1, 0.061982274, 0.061982274, 0.061982274, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 100
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ve8x0"]
+gradient = SubResource("Gradient_ryy88")
+fill = 1
+fill_from = Vector2(0.4826087, 0.47391304)
+
 [node name="lichttür" type="StaticBody2D" unique_id=785221569]
 script = ExtResource("1_v8h5v")
 
@@ -56,12 +123,12 @@ occluder = SubResource("OccluderPolygon2D_1bkod")
 
 [node name="TÜR_Sprite" type="Sprite2D" parent="TÜR_coll" unique_id=864872337]
 texture_filter = 1
-position = Vector2(-7.6293945e-06, 7.0000014)
-scale = Vector2(1.1249988, 1.4583335)
+position = Vector2(-7.6293945e-06, 4.7683716e-06)
+scale = Vector2(1.1249988, 1.7500001)
 texture = ExtResource("2_ryy88")
 
 [node name="Lock1" type="Area2D" parent="." unique_id=1689997404]
-position = Vector2(229, 138)
+position = Vector2(107, 153)
 script = ExtResource("3_ryy88")
 
 [node name="Lock1_Asprite" type="AnimatedSprite2D" parent="Lock1" unique_id=1683559049]
@@ -79,5 +146,18 @@ shape = SubResource("RectangleShape2D_ofbfx")
 position = Vector2(1, -1)
 occluder = SubResource("OccluderPolygon2D_7debn")
 occluder_light_mask = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=366756949]
+libraries/ = SubResource("AnimationLibrary_m05yr")
+
+[node name="PointLight2D1" type="PointLight2D" parent="." unique_id=1208085763]
+z_index = 10
+position = Vector2(109, 155)
+scale = Vector2(0.874561, 0.8502676)
+color = Color(0.32156864, 0.7647059, 0.24705882, 0.47058824)
+energy = 0.43
+texture = SubResource("GradientTexture2D_ve8x0")
+offset = Vector2(5, 5)
+texture_scale = 4.27
 
 [connection signal="area_entered" from="Lock1" to="Lock1" method="_on_area_entered"]

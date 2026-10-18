@@ -203,7 +203,6 @@ polygon = PackedVector2Array(86, 20, 85, 44, 104, 44, 100, 18)
 script = ExtResource("1_hjaqi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1735037770]
-visible = false
 shape = SubResource("CapsuleShape2D_xrivr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1393654290]
@@ -214,7 +213,6 @@ animation = &"Idle_right"
 autoplay = "Idle_right"
 
 [node name="hitbox_punch" type="Area2D" parent="." unique_id=1215043374]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_punch" unique_id=222129076 groups=["Hitbox"]]
 position = Vector2(15, -3)
@@ -222,7 +220,6 @@ shape = SubResource("RectangleShape2D_13qdw")
 disabled = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=997488243]
-visible = false
 position = Vector2(-94, -31)
 occluder = SubResource("OccluderPolygon2D_1bkod")
 
