@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://pm7emgr28huy"]
 
-[ext_resource type="Script" uid="uid://bjoguxseflxgd" path="res://script/StandardEnemy.gd" id="1_0k2bh"]
+[ext_resource type="Script" uid="uid://bjoguxseflxgd" path="res://script/Enemies/StandardEnemy.gd" id="1_0k2bh"]
 [ext_resource type="Script" uid="uid://cmkkpswrmcjcp" path="res://script/states/state_machine.gd" id="3_6javv"]
 [ext_resource type="Script" uid="uid://d3fpsa10xismy" path="res://script/hitbox.gd" id="3_gwgim"]
 [ext_resource type="Script" uid="uid://dt5flil8qjm4a" path="res://script/hurtbox.gd" id="4_2ljew"]

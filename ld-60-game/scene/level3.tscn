@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bhqxkbrokoyna" path="res://scene/respawnpoint.tscn" id="7_4hqa2"]
 [ext_resource type="Texture2D" uid="uid://d3jejadj4w83l" path="res://assets/Paralaxe1_höhle.png" id="7_7k4yc"]
 [ext_resource type="Texture2D" uid="uid://8kcmixrdw1eh" path="res://assets/wandbild.png" id="7_gxvh0"]
-[ext_resource type="PackedScene" uid="uid://pm7emgr28huy" path="res://scene/StandardEnemy.tscn" id="8_7k4yc"]
+[ext_resource type="PackedScene" uid="uid://pm7emgr28huy" path="res://scene/Enemies/StandardEnemy.tscn" id="8_7k4yc"]
 [ext_resource type="Script" uid="uid://d22ir26i1nexq" path="res://script/object_stats.gd" id="9_sdohn"]
 
 [sub_resource type="Gradient" id="Gradient_ll5lq"]

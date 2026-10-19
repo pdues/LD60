@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://du4n2qpx28iqe"]
 
 [ext_resource type="PackedScene" uid="uid://k16wopb2mk8t" path="res://scene/player.tscn" id="1_pu4bb"]
-[ext_resource type="PackedScene" uid="uid://dqtkh7esfvg3s" path="res://scene/tür.tscn" id="3_oj781"]
+[ext_resource type="PackedScene" uid="uid://dqtkh7esfvg3s" path="res://scene/Objects/tür.tscn" id="3_oj781"]
 [ext_resource type="Texture2D" uid="uid://bbpg4cyy7jt0x" path="res://assets/lock.png" id="3_qt7cu"]
-[ext_resource type="PackedScene" uid="uid://d2lx71xs500bv" path="res://scene/hindernis.tscn" id="4_m3dbj"]
-[ext_resource type="PackedScene" uid="uid://pm7emgr28huy" path="res://scene/StandardEnemy.tscn" id="5_m3dbj"]
+[ext_resource type="PackedScene" uid="uid://d2lx71xs500bv" path="res://scene/Objects/hindernis.tscn" id="4_m3dbj"]
+[ext_resource type="PackedScene" uid="uid://pm7emgr28huy" path="res://scene/Enemies/StandardEnemy.tscn" id="5_m3dbj"]
 [ext_resource type="Texture2D" uid="uid://clmqs0htgk6c6" path="res://assets/TILEMAP.png" id="6_hjkxd"]
 [ext_resource type="Script" uid="uid://d22ir26i1nexq" path="res://script/object_stats.gd" id="6_vr3a4"]
 [ext_resource type="PackedScene" uid="uid://bhqxkbrokoyna" path="res://scene/respawnpoint.tscn" id="8_vr3a4"]
