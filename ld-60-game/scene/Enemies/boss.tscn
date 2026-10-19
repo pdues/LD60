@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://b85xk7c3x77t1" path="res://script/states/Enemies/Boss/Alive/Attack/BossAoE.gd" id="14_wu6rk"]
 [ext_resource type="Script" uid="uid://cslaq6x7genxl" path="res://script/states/HFSM/HFSM.gd" id="17_wu6rk"]
 [ext_resource type="Script" uid="uid://bkypjglw1d6ng" path="res://script/states/Enemies/Boss/Alive/BossPhase2.gd" id="19_c5jam"]
+[ext_resource type="Texture2D" uid="uid://ulufer6iumfd" path="res://assets/tür.png" id="21_xejww"]
 
 [sub_resource type="Resource" id="Resource_crl02"]
 resource_local_to_scene = true
@@ -52,13 +53,14 @@ metadata/_custom_type_script = "uid://ci3rdym5rhinp"
 radius = 23.0
 height = 164.0
 
-[node name="Boss" type="CharacterBody2D" unique_id=1121860251 node_paths=PackedStringArray("hurtbox", "hitbox_melee1", "hitbox_melee2") groups=["Boss"]]
+[node name="Boss" type="CharacterBody2D" unique_id=1121860251 node_paths=PackedStringArray("hurtbox", "hitbox_melee1", "hitbox_melee2", "hp_bar") groups=["Boss"]]
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_lmix8")
 hurtbox = NodePath("Hurtbox")
 hitbox_melee1 = NodePath("Hitbox_melee1/CollisionShape2D")
 hitbox_melee2 = NodePath("Hitbox_melee2/CollisionShape2D")
+hp_bar = NodePath("TextureProgressBar")
 stats = SubResource("Resource_crl02")
 stopping_speed = 2.0
 max_attack_range = 75.0
@@ -218,5 +220,23 @@ metadata/_custom_type_script = "uid://8ta7oy8sgr5k"
 [node name="death" type="Node" parent="HFSM" unique_id=378459121]
 script = ExtResource("7_e6ho8")
 metadata/_custom_type_script = "uid://cjflv2die5dnn"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1862781280]
+modulate = Color(0.50476974, 4.9605556, 0.5234132, 0.5647059)
+texture_filter = 1
+offset_left = -9.0
+offset_top = -86.0
+offset_right = 7.0
+offset_bottom = -38.0
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.5, 1.2)
+offset_transform_rotation = -1.5707964
+value = 100.0
+fill_mode = 2
+texture_under = ExtResource("21_xejww")
+texture_progress = ExtResource("21_xejww")
+tint_under = Color(0.049457867, 0.049457867, 0.049457867, 0.32156864)
+tint_over = Color(1, 1, 1, 0.27058825)
+tint_progress = Color(1.5084606, 1.3747942, 0, 1)
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
