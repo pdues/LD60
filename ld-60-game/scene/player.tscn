@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://ci3rdym5rhinp" path="res://script/weapon_stats.gd" id="4_ml7e8"]
 [ext_resource type="Script" uid="uid://dt5flil8qjm4a" path="res://script/hurtbox.gd" id="5_dk1vr"]
 [ext_resource type="Script" uid="uid://cvrlvfqut7jqp" path="res://script/states/Player/playerIdle.gd" id="5_s4jxa"]
+[ext_resource type="Texture2D" uid="uid://ulufer6iumfd" path="res://assets/tür.png" id="6_4ja17"]
 [ext_resource type="Script" uid="uid://d22ir26i1nexq" path="res://script/object_stats.gd" id="6_34jf3"]
 [ext_resource type="Script" uid="uid://dt65fdxii0awn" path="res://script/states/Player/playerPunch.gd" id="7_hp4bs"]
 [ext_resource type="Script" uid="uid://fd3lxvrvp46h" path="res://script/states/Player/PlayerHurt.gd" id="10_ml7e8"]
@@ -360,9 +361,10 @@ hp = 10
 shape = SubResource("CapsuleShape2D_xrivr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1393654290]
+position = Vector2(0, 1)
 scale = Vector2(0.9, 0.9)
 sprite_frames = SubResource("SpriteFrames_xrivr")
-animation = &"post_slash_l"
+animation = &"post_slash_r"
 autoplay = "Idle_right"
 
 [node name="hitbox_punch" type="Area2D" parent="." unique_id=1215043374]
@@ -409,17 +411,38 @@ script = ExtResource("7_hp4bs")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://dt65fdxii0awn"
 
-[node name="hurt" type="Node" parent="state_machine" unique_id=995920287 node_paths=PackedStringArray("player")]
+[node name="hurt" type="Node" parent="state_machine" unique_id=995920287 node_paths=PackedStringArray("player", "hp_bar")]
 script = ExtResource("10_ml7e8")
 player = NodePath("../..")
+hp_bar = NodePath("../../TextureProgressBar")
 metadata/_custom_type_script = "uid://fd3lxvrvp46h"
 
-[node name="death" type="Node" parent="state_machine" unique_id=2002385063 node_paths=PackedStringArray("player")]
+[node name="death" type="Node" parent="state_machine" unique_id=2002385063 node_paths=PackedStringArray("player", "hp_bar")]
 script = ExtResource("11_ihjo1")
 player = NodePath("../..")
+hp_bar = NodePath("../../TextureProgressBar")
 metadata/_custom_type_script = "uid://cshdfkknos78m"
 
 [node name="Licht" parent="." unique_id=361559328 instance=ExtResource("2_2fvbb")]
 position = Vector2(1, 6)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1458985345]
+modulate = Color(3.0058017, 0.049733143, 0, 0.34901962)
+texture_filter = 1
+offset_left = -7.0
+offset_top = -42.0
+offset_right = 9.0
+offset_bottom = 6.0
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.15, 0.5)
+offset_transform_rotation = -1.5707964
+max_value = 10.0
+value = 10.0
+fill_mode = 2
+texture_under = ExtResource("6_4ja17")
+texture_progress = ExtResource("6_4ja17")
+tint_under = Color(0.049457867, 0.049457867, 0.049457867, 0.32156864)
+tint_over = Color(1, 1, 1, 0.27058825)
+tint_progress = Color(1.5084606, 1.3747942, 0, 1)
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

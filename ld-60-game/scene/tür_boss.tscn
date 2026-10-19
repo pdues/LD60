@@ -52,7 +52,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ootyc"]
 
 [sub_resource type="Gradient" id="Gradient_ryy88"]
-offsets = PackedFloat32Array(0.030120483, 0.2, 0.46, 1)
+offsets = PackedFloat32Array(0.030120483, 0.2, 0.46, 0.68)
 colors = PackedColorArray(0.9027778, 0.9027778, 0.9027778, 1, 0.22539008, 0.22539008, 0.22539008, 1, 0.061982274, 0.061982274, 0.061982274, 1, 0, 0, 0, 0)
 metadata/_snap_enabled = true
 metadata/_snap_count = 100

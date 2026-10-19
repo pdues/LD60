@@ -130,7 +130,6 @@ fill_from = Vector2(0.4826087, 0.47391304)
 [node name="player" parent="." unique_id=963260103 node_paths=PackedStringArray("respawnpoint") instance=ExtResource("1_pu4bb")]
 z_index = 11
 position = Vector2(133, 144)
-hp = 1
 respawnpoint = NodePath("../respawnpoint")
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=579380333]
