@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d2lx71xs500bv" path="res://scene/Objects/hindernis.tscn" id="11_87m6s"]
 [ext_resource type="PackedScene" uid="uid://baep2do5evxu4" path="res://scene/Objects/pickup.tscn" id="12_8s5jp"]
 [ext_resource type="PackedScene" uid="uid://lgktiyao3klo" path="res://scene/Enemies/boss.tscn" id="13_m1fuq"]
+[ext_resource type="PackedScene" uid="uid://dnelvw4kgjn7a" path="res://scene/Objects/winlantern.tscn" id="14_gxvh0"]
 
 [sub_resource type="Gradient" id="Gradient_ll5lq"]
 offsets = PackedFloat32Array(0, 0.32, 1)
@@ -108,14 +109,6 @@ physics_layer_0/collision_mask = 7
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_hjkxd")
 sources/0 = SubResource("TileSetAtlasSource_8pvpx")
 
-[sub_resource type="Resource" id="Resource_m1fuq"]
-resource_local_to_scene = true
-resource_name = "EnemyStats"
-script = ExtResource("9_sdohn")
-max_health = 5
-current_health = 5
-metadata/_custom_type_script = "uid://d22ir26i1nexq"
-
 [sub_resource type="Resource" id="Resource_gxvh0"]
 resource_local_to_scene = true
 resource_name = "EnemyStats"
@@ -133,6 +126,14 @@ current_health = 5
 metadata/_custom_type_script = "uid://d22ir26i1nexq"
 
 [sub_resource type="Resource" id="Resource_2ecjj"]
+resource_local_to_scene = true
+resource_name = "EnemyStats"
+script = ExtResource("9_sdohn")
+max_health = 5
+current_health = 5
+metadata/_custom_type_script = "uid://d22ir26i1nexq"
+
+[sub_resource type="Resource" id="Resource_mixx0"]
 resource_local_to_scene = true
 resource_name = "BossStats"
 script = ExtResource("9_sdohn")
@@ -226,21 +227,21 @@ on = 1
 
 [node name="StandardEnemy" parent="." unique_id=1837803404 instance=ExtResource("8_7k4yc")]
 position = Vector2(1298, 120)
-stats = SubResource("Resource_m1fuq")
+stats = SubResource("Resource_gxvh0")
 
 [node name="StandardEnemy2" parent="." unique_id=180754847 instance=ExtResource("8_7k4yc")]
 position = Vector2(1366, 282)
-stats = SubResource("Resource_gxvh0")
+stats = SubResource("Resource_k6vnk")
 
 [node name="StandardEnemy3" parent="." unique_id=113665110 instance=ExtResource("8_7k4yc")]
 position = Vector2(1155, -413)
-stats = SubResource("Resource_k6vnk")
+stats = SubResource("Resource_2ecjj")
 
 [node name="Tür_boss" parent="." unique_id=1696774893 instance=ExtResource("10_sdohn")]
 position = Vector2(1399, -158)
 
 [node name="respawnpoint2" parent="." unique_id=1926891149 instance=ExtResource("7_4hqa2")]
-position = Vector2(1346, -132)
+position = Vector2(1314, -149)
 
 [node name="Hindernis" parent="." unique_id=1907527197 instance=ExtResource("11_87m6s")]
 position = Vector2(1491, -492)
@@ -262,6 +263,8 @@ position = Vector2(-3, 162)
 
 [node name="Boss" parent="." unique_id=1121860251 instance=ExtResource("13_m1fuq")]
 position = Vector2(1785, -150)
-hp = 100
-stats = SubResource("Resource_2ecjj")
+stats = SubResource("Resource_mixx0")
 move_speed = 75.0
+
+[node name="winlantern" parent="." unique_id=1735263335 instance=ExtResource("14_gxvh0")]
+position = Vector2(1642, -133)

@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c7uwfo76ng27j" path="res://assets/Paralaxe0.png" id="6_17rxn"]
 [ext_resource type="Texture2D" uid="uid://h6ueeee7wsnp" path="res://assets/Paralaxe3.png" id="6_ll5lq"]
 [ext_resource type="PackedScene" uid="uid://lgktiyao3klo" path="res://scene/Enemies/boss.tscn" id="10_yq8tf"]
+[ext_resource type="PackedScene" uid="uid://dnelvw4kgjn7a" path="res://scene/Objects/winlantern.tscn" id="11_sng2h"]
 [ext_resource type="PackedScene" uid="uid://bhyq22ogm2vkb" path="res://scene/tür_boss.tscn" id="11_ym5sv"]
 
 [sub_resource type="Gradient" id="Gradient_ll5lq"]
@@ -131,3 +132,6 @@ position = Vector2(70, 33)
 [node name="Boss" parent="." unique_id=1121860251 instance=ExtResource("10_yq8tf")]
 position = Vector2(-140, 31)
 stats = SubResource("Resource_5g16k")
+
+[node name="winlantern" parent="." unique_id=1180942153 instance=ExtResource("11_sng2h")]
+position = Vector2(116, 120)
