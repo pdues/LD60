@@ -346,12 +346,15 @@ script = ExtResource("6_34jf3")
 metadata/_custom_type_script = "uid://d22ir26i1nexq"
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1bkod"]
-polygon = PackedVector2Array(86, 20, 85, 44, 104, 44, 100, 18)
+closed = false
+cull_mode = 1
+polygon = PackedVector2Array(89, 33, 94, 17, 99, 33)
 
 [node name="player" type="CharacterBody2D" unique_id=963260103 groups=["Player"]]
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_hjaqi")
+hp = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1735037770]
 shape = SubResource("CapsuleShape2D_xrivr")
