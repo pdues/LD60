@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c5nxkxhdvvxpk" path="res://assets/Paralaxe0_höhle.png" id="9_no78e"]
 [ext_resource type="Texture2D" uid="uid://bdtmedyispw7l" path="res://assets/Paralaxe2_höhle.png" id="10_ljtdq"]
 [ext_resource type="Texture2D" uid="uid://d3jejadj4w83l" path="res://assets/Paralaxe1_höhle.png" id="11_wop3v"]
+[ext_resource type="Script" uid="uid://bi0en15xihoif" path="res://script/Level1_to_2.gd" id="12_ljtdq"]
 
 [sub_resource type="Gradient" id="Gradient_ll5lq"]
 offsets = PackedFloat32Array(0, 0.32, 1)
@@ -22,7 +23,7 @@ metadata/_snap_count = 100
 gradient = SubResource("Gradient_ll5lq")
 fill_to = Vector2(0.06521739, 0.073913045)
 
-[sub_resource type="Resource" id="Resource_no78e"]
+[sub_resource type="Resource" id="Resource_wop3v"]
 resource_local_to_scene = true
 resource_name = "EnemyStats"
 script = ExtResource("6_vr3a4")
@@ -125,6 +126,9 @@ gradient = SubResource("Gradient_5pmbp")
 fill = 1
 fill_from = Vector2(0.4826087, 0.47391304)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(125, 100.5)
+
 [node name="Node2D3" type="Node2D" unique_id=1215644629]
 
 [node name="player" parent="." unique_id=963260103 node_paths=PackedStringArray("respawnpoint") instance=ExtResource("1_pu4bb")]
@@ -172,7 +176,7 @@ position = Vector2(1023, 123)
 
 [node name="StandardEnemy" parent="." unique_id=1837803404 instance=ExtResource("5_m3dbj")]
 position = Vector2(943, 149)
-stats = SubResource("Resource_no78e")
+stats = SubResource("Resource_wop3v")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=643946628]
 texture_filter = 1
@@ -296,3 +300,16 @@ modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
 position = Vector2(459.5, -93.611084)
 scale = Vector2(2.4328125, 1.5817904)
 texture = ExtResource("11_wop3v")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1897176784]
+light_mask = 0
+visibility_layer = 14
+collision_layer = 255
+collision_mask = 127
+script = ExtResource("12_ljtdq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1671521226]
+position = Vector2(1706, 94)
+shape = SubResource("RectangleShape2D_xrivr")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
