@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://fayl34ikgtsh"]
+[gd_scene format=3 uid="uid://doslvbia8yct"]
 
 [ext_resource type="Script" uid="uid://2djpfmqymc64" path="res://script/licht.gd" id="1_mwudh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bkod"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1bkod"]
-polygon = PackedVector2Array(0.19659436, -0.2877803, -0.39318871, -0.2877803, -0.5897831, -0.09592677, -0.39318871, 0.09592677, 0.19659436, 0.09592677, -0.4914859, 0.19185355, -0.9829717, -0.09592677, -0.4914859, -0.38370708)
+polygon = PackedVector2Array(-0.29489154, -0.2877803, -0.39318871, -0.2877803, -0.5897831, -0.09592677, -0.39318871, 0.09592677, -0.29489154, 0.09592677, -0.4914859, 0.19185355, -0.9829717, -0.09592677, -0.4914859, -0.38370708)
 
 [sub_resource type="Gradient" id="Gradient_1sw0b"]
 offsets = PackedFloat32Array(0.11290322, 1)
