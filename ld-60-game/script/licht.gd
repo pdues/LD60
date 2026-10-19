@@ -1,12 +1,11 @@
 extends Node2D
 
 var toggle = 0
-var time_elapsed = 3.0
+var time_elapsed = 1.0
 var time = 0.0
 var normal_lich
 @onready var pickup = 0
 @export var dir = "right"
-var hitbox_offset  =15.0
 
 func _physics_process(delta: float) -> void:
 	if dir == "right":
