@@ -2,10 +2,13 @@
 
 [ext_resource type="Script" uid="uid://b0c5re34ov6m3" path="res://script/Enemies/boss.gd" id="1_lmix8"]
 [ext_resource type="Texture2D" uid="uid://b3nrl06y7aimw" path="res://icon.svg" id="2_ko00d"]
+[ext_resource type="Script" uid="uid://d22ir26i1nexq" path="res://script/object_stats.gd" id="2_y8m2v"]
 [ext_resource type="Script" uid="uid://dt5flil8qjm4a" path="res://script/hurtbox.gd" id="3_wectw"]
+[ext_resource type="Script" uid="uid://d3fpsa10xismy" path="res://script/hitbox.gd" id="4_wu6rk"]
 [ext_resource type="Script" uid="uid://5peq5aw5j0f3" path="res://script/states/Enemies/Boss/BossStart.gd" id="5_wectw"]
 [ext_resource type="Script" uid="uid://spu474uaedmi" path="res://script/states/Enemies/Boss/Alive/BossAlive.gd" id="6_esv6b"]
-[ext_resource type="Script" uid="uid://c8t4qpa7rykw5" path="res://script/states/Enemies/Boss/Alive/BossPhase.gd" id="7_dlumj"]
+[ext_resource type="Script" uid="uid://ci3rdym5rhinp" path="res://script/weapon_stats.gd" id="6_x27xr"]
+[ext_resource type="Script" uid="uid://c8t4qpa7rykw5" path="res://script/states/Enemies/Boss/Alive/BossPhase1.gd" id="7_dlumj"]
 [ext_resource type="Script" uid="uid://cjflv2die5dnn" path="res://script/states/Enemies/Boss/BossDeath.gd" id="7_e6ho8"]
 [ext_resource type="Script" uid="uid://b8kitk7f0mfx7" path="res://script/states/Enemies/Boss/Alive/Chill/BossChill.gd" id="8_esv6b"]
 [ext_resource type="Script" uid="uid://d4bu6x81ni3m2" path="res://script/states/Enemies/Boss/Alive/Chill/BossRest.gd" id="9_l0vgi"]
@@ -16,26 +19,88 @@
 [ext_resource type="Script" uid="uid://8ta7oy8sgr5k" path="res://script/states/Enemies/Boss/Alive/Attack/BossMelee2.gd" id="13_dlumj"]
 [ext_resource type="Script" uid="uid://b85xk7c3x77t1" path="res://script/states/Enemies/Boss/Alive/Attack/BossAoE.gd" id="14_wu6rk"]
 [ext_resource type="Script" uid="uid://cslaq6x7genxl" path="res://script/states/HFSM/HFSM.gd" id="17_wu6rk"]
+[ext_resource type="Script" uid="uid://bkypjglw1d6ng" path="res://script/states/Enemies/Boss/Alive/BossPhase2.gd" id="19_c5jam"]
+
+[sub_resource type="Resource" id="Resource_crl02"]
+resource_local_to_scene = true
+resource_name = "BossStats"
+script = ExtResource("2_y8m2v")
+metadata/_custom_type_script = "uid://d22ir26i1nexq"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aliaw"]
 size = Vector2(84, 112)
 
-[node name="Boss" type="CharacterBody2D" unique_id=1121860251]
+[sub_resource type="Resource" id="Resource_y8m2v"]
+resource_local_to_scene = true
+script = ExtResource("6_x27xr")
+display_name = &"Melee1"
+damage = 5
+metadata/_custom_type_script = "uid://ci3rdym5rhinp"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_crl02"]
+radius = 31.0
+height = 98.0
+
+[sub_resource type="Resource" id="Resource_x27xr"]
+resource_local_to_scene = true
+script = ExtResource("6_x27xr")
+display_name = &"Melee2"
+damage = 10
+metadata/_custom_type_script = "uid://ci3rdym5rhinp"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2g1jd"]
+radius = 23.0
+height = 164.0
+
+[node name="Boss" type="CharacterBody2D" unique_id=1121860251 node_paths=PackedStringArray("hurtbox", "hitbox_melee1", "hitbox_melee2") groups=["Boss"]]
+collision_layer = 8
+collision_mask = 4
 script = ExtResource("1_lmix8")
-hp = 1
+hurtbox = NodePath("Hurtbox")
+hitbox_melee1 = NodePath("Hitbox_melee1/CollisionShape2D")
+hitbox_melee2 = NodePath("Hitbox_melee2/CollisionShape2D")
+stats = SubResource("Resource_crl02")
 stopping_speed = 2.0
-max_attack_range = 50.0
+max_attack_range = 75.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1718153696]
 scale = Vector2(0.65625, 0.875)
 texture = ExtResource("2_ko00d")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=424362969]
+collision_layer = 8
+collision_mask = 4
 script = ExtResource("3_wectw")
+stats = SubResource("Resource_crl02")
 metadata/_custom_type_script = "uid://dt5flil8qjm4a"
 
 [node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox" unique_id=1345153662]
 shape = SubResource("RectangleShape2D_aliaw")
+
+[node name="Hitbox_melee1" type="Area2D" parent="." unique_id=2032194843 groups=["Boss"]]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("4_wu6rk")
+weapon_stats = SubResource("Resource_y8m2v")
+metadata/_custom_type_script = "uid://d3fpsa10xismy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox_melee1" unique_id=1598851003]
+position = Vector2(42, 0)
+shape = SubResource("CapsuleShape2D_crl02")
+disabled = true
+
+[node name="Hitbox_melee2" type="Area2D" parent="." unique_id=912648713 groups=["Boss"]]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("4_wu6rk")
+weapon_stats = SubResource("Resource_x27xr")
+metadata/_custom_type_script = "uid://d3fpsa10xismy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox_melee2" unique_id=1887273591]
+position = Vector2(42, 0)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_2g1jd")
+disabled = true
 
 [node name="HFSM" type="Node" parent="." unique_id=1474652291 node_paths=PackedStringArray("boss", "start_state")]
 script = ExtResource("17_wu6rk")
@@ -56,10 +121,12 @@ phase2_state = NodePath("phase2")
 death_state = NodePath("../death")
 metadata/_custom_type_script = "uid://spu474uaedmi"
 
-[node name="phase1" type="Node" parent="HFSM/alive" unique_id=1679532442 node_paths=PackedStringArray("chill_state", "attack_state")]
+[node name="phase1" type="Node" parent="HFSM/alive" unique_id=1577796695 node_paths=PackedStringArray("chill_state", "attack_state", "death_state", "phase_transition")]
 script = ExtResource("7_dlumj")
 chill_state = NodePath("chill")
 attack_state = NodePath("attack")
+death_state = NodePath("../../death")
+phase_transition = NodePath("../transition")
 initial_child = NodePath("chill/chase")
 metadata/_custom_type_script = "uid://c8t4qpa7rykw5"
 
@@ -85,19 +152,22 @@ metadata/_custom_type_script = "uid://ddqngt70rrdwn"
 script = ExtResource("11_dlumj")
 melee1_state = NodePath("melee1")
 melee2_state = NodePath("melee2")
-AoE_state = NodePath("AoE")
+AoE_state = NodePath("melee1")
 metadata/_custom_type_script = "uid://bext5xdjl6kg4"
 
-[node name="melee1" type="Node" parent="HFSM/alive/phase1/attack" unique_id=429708689]
+[node name="melee1" type="Node" parent="HFSM/alive/phase1/attack" unique_id=429708689 node_paths=PackedStringArray("phase")]
 script = ExtResource("12_dlumj")
+phase = NodePath("../..")
 metadata/_custom_type_script = "uid://bamoa488lqdlx"
 
-[node name="melee2" type="Node" parent="HFSM/alive/phase1/attack" unique_id=1322018765]
+[node name="melee2" type="Node" parent="HFSM/alive/phase1/attack" unique_id=1322018765 node_paths=PackedStringArray("phase")]
 script = ExtResource("13_dlumj")
+phase = NodePath("../..")
 metadata/_custom_type_script = "uid://8ta7oy8sgr5k"
 
-[node name="AoE" type="Node" parent="HFSM/alive/phase1/attack" unique_id=1003267897]
+[node name="AoE" type="Node" parent="HFSM/alive/phase1/attack" unique_id=1003267897 node_paths=PackedStringArray("phase")]
 script = ExtResource("14_wu6rk")
+phase = NodePath("../..")
 metadata/_custom_type_script = "uid://b85xk7c3x77t1"
 
 [node name="transition" type="Node" parent="HFSM/alive" unique_id=121049620 node_paths=PackedStringArray("phase2_state")]
@@ -105,11 +175,12 @@ script = ExtResource("12_l0vgi")
 phase2_state = NodePath("../phase2")
 metadata/_custom_type_script = "uid://cli0rgqjatjtl"
 
-[node name="phase2" type="Node" parent="HFSM/alive" unique_id=1201893921 node_paths=PackedStringArray("chill_state", "attack_state")]
-script = ExtResource("7_dlumj")
+[node name="phase2" type="Node" parent="HFSM/alive" unique_id=1654019881 node_paths=PackedStringArray("chill_state", "attack_state", "death_state")]
+script = ExtResource("19_c5jam")
 chill_state = NodePath("chill")
 attack_state = NodePath("attack")
-metadata/_custom_type_script = "uid://c8t4qpa7rykw5"
+death_state = NodePath("../../death")
+metadata/_custom_type_script = "uid://bkypjglw1d6ng"
 
 [node name="chill" type="Node" parent="HFSM/alive/phase2" unique_id=1602595894 node_paths=PackedStringArray("rest_state", "chase_state")]
 script = ExtResource("8_esv6b")
@@ -134,14 +205,18 @@ melee2_state = NodePath("melee2")
 AoE_state = NodePath("melee1")
 metadata/_custom_type_script = "uid://bext5xdjl6kg4"
 
-[node name="melee1" type="Node" parent="HFSM/alive/phase2/attack" unique_id=1322388817]
+[node name="melee1" type="Node" parent="HFSM/alive/phase2/attack" unique_id=1322388817 node_paths=PackedStringArray("phase")]
 script = ExtResource("12_dlumj")
+phase = NodePath("../..")
 metadata/_custom_type_script = "uid://bamoa488lqdlx"
 
-[node name="melee2" type="Node" parent="HFSM/alive/phase2/attack" unique_id=1424169972]
+[node name="melee2" type="Node" parent="HFSM/alive/phase2/attack" unique_id=1424169972 node_paths=PackedStringArray("phase")]
 script = ExtResource("13_dlumj")
+phase = NodePath("../..")
 metadata/_custom_type_script = "uid://8ta7oy8sgr5k"
 
 [node name="death" type="Node" parent="HFSM" unique_id=378459121]
 script = ExtResource("7_e6ho8")
 metadata/_custom_type_script = "uid://cjflv2die5dnn"
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

@@ -29,6 +29,7 @@ Enemy=""
 Hitbox=""
 Lichtray=""
 pickup=""
+Boss=""
 
 [layer_names]
 

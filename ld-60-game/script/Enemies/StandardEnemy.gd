@@ -15,10 +15,10 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravity * delta
 	move_and_slide()
 
-func _on_hitbox_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	if body.is_in_group("Player"):
-		print("player is hit")
-	pass # Replace with function body.
+#func _on_hitbox_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	#if body.is_in_group("Player"):
+		#print("player is hit")
+	#pass # Replace with function body.
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	var hitbox = area as Hitbox
