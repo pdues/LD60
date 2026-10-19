@@ -8,6 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://k0t2t8cy6n2e" path="res://scene/Objects/lichttür3.tscn" id="6_e7nuw"]
 [ext_resource type="Texture2D" uid="uid://8kcmixrdw1eh" path="res://assets/wandbild.png" id="7_pgd3y"]
 [ext_resource type="PackedScene" uid="uid://baep2do5evxu4" path="res://scene/Objects/pickup.tscn" id="8_vilue"]
+[ext_resource type="PackedScene" uid="uid://pm7emgr28huy" path="res://scene/Enemies/StandardEnemy.tscn" id="9_8pvpx"]
+[ext_resource type="Script" uid="uid://d22ir26i1nexq" path="res://script/object_stats.gd" id="10_pfv2s"]
+[ext_resource type="PackedScene" uid="uid://bhqxkbrokoyna" path="res://scene/respawnpoint.tscn" id="11_2d2cv"]
+[ext_resource type="Texture2D" uid="uid://c5nxkxhdvvxpk" path="res://assets/Paralaxe0_höhle.png" id="12_ma57r"]
+[ext_resource type="Texture2D" uid="uid://bdtmedyispw7l" path="res://assets/Paralaxe2_höhle.png" id="13_4nof5"]
+[ext_resource type="Texture2D" uid="uid://d3jejadj4w83l" path="res://assets/Paralaxe1_höhle.png" id="14_skiai"]
 
 [sub_resource type="Gradient" id="Gradient_ll5lq"]
 offsets = PackedFloat32Array(0, 0.32, 1)
@@ -103,11 +109,44 @@ physics_layer_0/collision_mask = 7
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_hjkxd")
 sources/0 = SubResource("TileSetAtlasSource_8pvpx")
 
-[node name="Node2D" type="Node2D" unique_id=1179242632]
+[sub_resource type="Resource" id="Resource_ma57r"]
+resource_local_to_scene = true
+resource_name = "EnemyStats"
+script = ExtResource("10_pfv2s")
+max_health = 5
+current_health = 5
+metadata/_custom_type_script = "uid://d22ir26i1nexq"
 
-[node name="player" parent="." unique_id=963260103 instance=ExtResource("1_a3hhw")]
+[sub_resource type="Resource" id="Resource_4nof5"]
+resource_local_to_scene = true
+resource_name = "EnemyStats"
+script = ExtResource("10_pfv2s")
+max_health = 5
+current_health = 5
+metadata/_custom_type_script = "uid://d22ir26i1nexq"
+
+[sub_resource type="Resource" id="Resource_skiai"]
+resource_local_to_scene = true
+resource_name = "EnemyStats"
+script = ExtResource("10_pfv2s")
+max_health = 5
+current_health = 5
+metadata/_custom_type_script = "uid://d22ir26i1nexq"
+
+[sub_resource type="Resource" id="Resource_4ayjn"]
+resource_local_to_scene = true
+resource_name = "EnemyStats"
+script = ExtResource("10_pfv2s")
+max_health = 5
+current_health = 5
+metadata/_custom_type_script = "uid://d22ir26i1nexq"
+
+[node name="Node2D2" type="Node2D" unique_id=1179242632]
+
+[node name="player" parent="." unique_id=963260103 node_paths=PackedStringArray("respawnpoint") instance=ExtResource("1_a3hhw")]
 z_index = 11
-position = Vector2(64, 149)
+position = Vector2(51, 128)
+respawnpoint = NodePath("../respawnpoint_begin")
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=329846752]
 position = Vector2(0, -29)
@@ -156,3 +195,69 @@ texture = ExtResource("7_pgd3y")
 
 [node name="pickup" parent="." unique_id=1020326846 instance=ExtResource("8_vilue")]
 position = Vector2(421, 144)
+
+[node name="StandardEnemy" parent="." unique_id=1837803404 instance=ExtResource("9_8pvpx")]
+position = Vector2(1208, -119)
+stats = SubResource("Resource_ma57r")
+
+[node name="StandardEnemy2" parent="." unique_id=1169780697 instance=ExtResource("9_8pvpx")]
+position = Vector2(1055, 220)
+stats = SubResource("Resource_4nof5")
+
+[node name="StandardEnemy3" parent="." unique_id=1526519585 instance=ExtResource("9_8pvpx")]
+position = Vector2(1395, 213)
+stats = SubResource("Resource_skiai")
+
+[node name="StandardEnemy4" parent="." unique_id=2017269418 instance=ExtResource("9_8pvpx")]
+position = Vector2(1601, 208)
+stats = SubResource("Resource_4ayjn")
+
+[node name="respawnpoint_afterdoor" parent="." unique_id=1180942153 instance=ExtResource("11_2d2cv")]
+position = Vector2(1432, 140)
+
+[node name="respawnpoint_begin" parent="." unique_id=596513688 instance=ExtResource("11_2d2cv")]
+visible = false
+position = Vector2(20, 150)
+on = 1
+
+[node name="parallaxe" type="Node2D" parent="." unique_id=1973605085]
+z_index = -100
+z_as_relative = false
+position = Vector2(133, 144)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="parallaxe" unique_id=707918958]
+
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="parallaxe/ParallaxBackground" unique_id=1649639386]
+modulate = Color(0.7505669, 0.7505669, 0.7505669, 1)
+position = Vector2(152, 45)
+scale = Vector2(1, 2)
+motion_scale = Vector2(0.3, 0.225)
+motion_mirroring = Vector2(610, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="parallaxe/ParallaxBackground/ParallaxLayer1" unique_id=1806057878]
+position = Vector2(-27, 21.249992)
+scale = Vector2(0.95277774, 0.6319444)
+texture = ExtResource("12_ma57r")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="parallaxe/ParallaxBackground" unique_id=778360031]
+modulate = Color(0.8848981, 0.8848981, 0.8848981, 1)
+position = Vector2(101, 94)
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(605, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="parallaxe/ParallaxBackground/ParallaxLayer" unique_id=1420184856]
+position = Vector2(0, -47.5)
+scale = Vector2(1, 1.775)
+texture = ExtResource("13_4nof5")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="parallaxe/ParallaxBackground" unique_id=2146554362]
+modulate = Color(0.39723974, 0.39723974, 0.39723974, 1)
+position = Vector2(154, 99)
+motion_scale = Vector2(1, 0.76)
+motion_mirroring = Vector2(605, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="parallaxe/ParallaxBackground/ParallaxLayer2" unique_id=501802459]
+modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
+position = Vector2(1, -22.999977)
+scale = Vector2(1, 1.727778)
+texture = ExtResource("14_skiai")

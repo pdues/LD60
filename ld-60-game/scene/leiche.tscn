@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://ddyxnle7ww3q1"]
+
+[ext_resource type="Texture2D" uid="uid://bvoywlwsgw2l2" path="res://assets/movementsprite.png" id="1_8sear"]
+[ext_resource type="Script" uid="uid://cw2khchnervi1" path="res://script/leiche.gd" id="1_42gkj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42gkj"]
+atlas = ExtResource("1_8sear")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1bkod"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42gkj")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1bkod"]
+radius = 8.062258
+
+[node name="leiche" type="CharacterBody2D" unique_id=852284175]
+modulate = Color(1.5565991, 1.5565991, 1.5565991, 1)
+collision_layer = 0
+script = ExtResource("1_42gkj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=888804566]
+modulate = Color(0.4333519, 0.4333519, 0.4333519, 0.44313726)
+texture_filter = 1
+rotation = -1.5707964
+sprite_frames = SubResource("SpriteFrames_1bkod")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1587650040]
+shape = SubResource("CircleShape2D_1bkod")

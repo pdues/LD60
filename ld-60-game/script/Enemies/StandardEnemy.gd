@@ -6,7 +6,8 @@ class_name StandardEnemy
 @export var stats : ObjectStats
 @export var aggro_range : float = 100.0
 @export var attack_range : float = 20.0
-
+@export var sprite : AnimatedSprite2D
+@export var lamp : PointLight2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var hit : bool = false
 

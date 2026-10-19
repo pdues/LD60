@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c7uwfo76ng27j" path="res://assets/Paralaxe0.png" id="6_17rxn"]
 [ext_resource type="Texture2D" uid="uid://h6ueeee7wsnp" path="res://assets/Paralaxe3.png" id="6_ll5lq"]
 [ext_resource type="PackedScene" uid="uid://lgktiyao3klo" path="res://scene/Enemies/boss.tscn" id="11_ym5sv"]
+[ext_resource type="PackedScene" uid="uid://bhqxkbrokoyna" path="res://scene/respawnpoint.tscn" id="12_respawn"]
 
 [sub_resource type="Gradient" id="Gradient_ll5lq"]
 
@@ -29,8 +30,18 @@ script = ExtResource("4_17rxn")
 max_health = 5
 current_health = 5
 metadata/_custom_type_script = "uid://d22ir26i1nexq"
+resource_local_to_scene = true
+script = ExtResource("4_17rxn")
+max_health = 5
+current_health = 5
+metadata/_custom_type_script = "uid://d22ir26i1nexq"
 
 [sub_resource type="Resource" id="Resource_sng2h"]
+resource_local_to_scene = true
+script = ExtResource("4_17rxn")
+max_health = 5
+current_health = 5
+metadata/_custom_type_script = "uid://d22ir26i1nexq"
 resource_local_to_scene = true
 script = ExtResource("4_17rxn")
 max_health = 5
@@ -128,3 +139,6 @@ texture = ExtResource("6_ll5lq")
 [node name="Boss" parent="." unique_id=1121860251 instance=ExtResource("11_ym5sv")]
 z_index = -50
 position = Vector2(-286, 87)
+
+[node name="respawnpoint" parent="." unique_id=1180942153 instance=ExtResource("12_respawn")]
+position = Vector2(73, 136)
