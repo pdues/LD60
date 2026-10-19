@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bhqxkbrokoyna"]
+
+[ext_resource type="Script" uid="uid://2a2mo0olkng2" path="res://script/respawnpoint.gd" id="1_nn0t3"]
+[ext_resource type="Texture2D" uid="uid://dc387mjteax2s" path="res://assets/lamp.png" id="2_fw3sp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1bkod"]
+radius = 27.018513
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8avj8"]
+atlas = ExtResource("2_fw3sp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyomd"]
+atlas = ExtResource("2_fw3sp")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7debn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8avj8")
+}],
+"loop": 1,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyomd")
+}],
+"loop": 1,
+"name": &"on",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_adm6s"]
+offsets = PackedFloat32Array(0.030120483, 0.2, 0.46, 1)
+colors = PackedColorArray(0.9027778, 0.9027778, 0.9027778, 1, 0.22539008, 0.22539008, 0.22539008, 1, 0.061982274, 0.061982274, 0.061982274, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 100
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gaspc"]
+gradient = SubResource("Gradient_adm6s")
+fill = 1
+fill_from = Vector2(0.4826087, 0.47391304)
+
+[node name="respawnpoint" type="Node2D" unique_id=1180942153 groups=["respawnpoint"]]
+script = ExtResource("1_nn0t3")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=226383016]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1767880324]
+shape = SubResource("CircleShape2D_1bkod")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=57071728]
+sprite_frames = SubResource("SpriteFrames_7debn")
+animation = &"off"
+autoplay = "off"
+
+[node name="PointLight2D1" type="PointLight2D" parent="." unique_id=1983019795]
+z_index = 10
+position = Vector2(0, 1)
+scale = Vector2(0.31057099, 0.301944)
+enabled = false
+color = Color(0.9529412, 0.7647059, 0.24705882, 1)
+energy = 1.03
+texture = SubResource("GradientTexture2D_gaspc")
+offset = Vector2(5, 5)
+texture_scale = 4.27
+
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]

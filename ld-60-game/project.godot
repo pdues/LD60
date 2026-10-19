@@ -30,6 +30,7 @@ Hitbox=""
 Lichtray=""
 pickup=""
 Boss=""
+respawnpoint=""
 
 [layer_names]
 
