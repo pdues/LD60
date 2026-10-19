@@ -8,7 +8,7 @@ extends StaticBody2D
 
 func _on_hind_area_area_entered(area: Area2D) -> void:
 	if been_hit == false:
-		collider.disabled = true
+		collider.set_deferred("disabled",true)
 		self.set_collision_layer_value(2,false)
 		#self.set_collision_mask_value(4,false)
 		been_hit = true
