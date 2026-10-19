@@ -74,6 +74,7 @@ lamp = NodePath("TÜR_coll/PointLight2D1")
 
 [node name="TÜR_coll" type="CollisionShape2D" parent="Stage 1" unique_id=531149740]
 position = Vector2(247, 22)
+scale = Vector2(1.05, 1.05)
 shape = SubResource("CircleShape2D_7e58e")
 
 [node name="TÜR_Sprite" type="Sprite2D" parent="Stage 1/TÜR_coll" unique_id=1257699390]
