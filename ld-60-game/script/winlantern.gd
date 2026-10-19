@@ -1,5 +1,5 @@
 extends Node2D
-@export var on = 0
+@export var on = 1
 @onready var area = $Area2D
 @onready var sprite = $AnimatedSprite2D
 @onready var lamp = $PointLight2D1
@@ -7,7 +7,7 @@ var time_elasped = 0.0
 
 func _physics_process(delta: float) -> void:
 	if time_elasped > 3.0:
-		get_tree().change_scene_to_file("res://scene/Levels/Intro.tscn")
+		get_tree().change_scene_to_file("res://scene/Levels/End.tscn")
 	
 	if on == 0:
 		sprite.play("off")
