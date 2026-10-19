@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b5tbjeqfhhnua"]
+
+[ext_resource type="Texture2D" uid="uid://by0xpwddvlg0k" path="res://assets/transition.png" id="1_l1fog"]
+[ext_resource type="Script" uid="uid://daeur0p4jkd12" path="res://script/control.gd" id="2_r16jx"]
+[ext_resource type="FontFile" uid="uid://wjjyk46vytjb" path="res://assets/Snowbell-Wp4g9.ttf" id="3_yh2ke"]
+
+[node name="Node2D" type="Node2D" unique_id=104484107]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=11355885]
+position = Vector2(480, 270)
+texture = ExtResource("1_l1fog")
+
+[node name="Control" type="Control" parent="." unique_id=1024554638]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 959.0
+offset_bottom = 170.0
+script = ExtResource("2_r16jx")
+
+[node name="Label" type="Label" parent="Control" unique_id=177624001]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 89.0
+offset_right = 849.0
+offset_bottom = 172.0
+theme_override_constants/line_spacing = 5
+theme_override_fonts/font = ExtResource("3_yh2ke")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

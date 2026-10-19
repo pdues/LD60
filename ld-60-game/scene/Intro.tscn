@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://4vcmwrn8ll62"]
+
+[ext_resource type="Script" uid="uid://c3bg6cdqrygu3" path="res://script/intro.gd" id="1_lc4ft"]
+[ext_resource type="Texture2D" uid="uid://bw4qomksdyooh" path="res://assets/intro.png" id="2_873w0"]
+[ext_resource type="FontFile" uid="uid://wjjyk46vytjb" path="res://assets/Snowbell-Wp4g9.ttf" id="3_5qnnt"]
+
+[node name="Node2D" type="Node2D" unique_id=1221754592]
+script = ExtResource("1_lc4ft")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=110243532]
+position = Vector2(480, 270)
+texture = ExtResource("2_873w0")
+
+[node name="buttons" type="Control" parent="." unique_id=1626825540]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="start" type="Button" parent="buttons" unique_id=1593739899]
+layout_mode = 0
+offset_left = 402.0
+offset_top = 337.0
+offset_right = 588.0
+offset_bottom = 392.0
+theme_override_fonts/font = ExtResource("3_5qnnt")
+theme_override_font_sizes/font_size = 20
+text = "Start Game"
+
+[node name="quit" type="Button" parent="buttons" unique_id=1023995284]
+layout_mode = 0
+offset_left = 402.0
+offset_top = 405.0
+offset_right = 590.0
+offset_bottom = 461.0
+theme_override_fonts/font = ExtResource("3_5qnnt")
+theme_override_font_sizes/font_size = 20
+text = "Quit Game"
+
+[connection signal="pressed" from="buttons/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="buttons/quit" to="." method="_on_quit_pressed"]
