@@ -15,4 +15,4 @@ func _process(_delta: float) -> void:
 			await get_tree().create_timer(0.5).timeout
 			cd=false
 		else:
-			get_tree().change_scene_to_file("res://scene/Level1.tscn")
+			get_tree().change_scene_to_file("res://scene/Levels/Level1.tscn")
