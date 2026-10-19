@@ -11,7 +11,7 @@ radius = 98.0816
 [sub_resource type="Gradient" id="Gradient_adm6s"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0.38, 0.45999998, 0.53999996)
-colors = PackedColorArray(0.0005162346, 0.0005162346, 0.0005162346, 1, 0.9027778, 0.9027778, 0.9027778, 1, 0.009983954, 0.009983954, 0.009983954, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.9027778, 0.9027778, 0.9027778, 1, 0.011764706, 0.011764706, 0.011764706, 0)
 metadata/_snap_enabled = true
 metadata/_snap_count = 100
 
