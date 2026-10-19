@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://luixisypp4m3"]
+
+[ext_resource type="Script" uid="uid://c3bg6cdqrygu3" path="res://script/intro.gd" id="1_008s5"]
+[ext_resource type="FontFile" uid="uid://wjjyk46vytjb" path="res://assets/Snowbell-Wp4g9.ttf" id="2_008s5"]
+[ext_resource type="Texture2D" uid="uid://bx6lamyks3hcw" path="res://assets/endscreen.png" id="2_gbxr3"]
+
+[node name="Node2D" type="Node2D" unique_id=638555699]
+script = ExtResource("1_008s5")
+metadata/_edit_vertical_guides_ = [961.0, 480.0]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=199409904]
+modulate = Color(0.59424114, 0.59424114, 0.59424114, 1)
+position = Vector2(488.00003, 275)
+scale = Vector2(1.1034853, 1.1296296)
+texture = ExtResource("2_gbxr3")
+
+[node name="buttons" type="Control" parent="." unique_id=2046751859]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="quit" type="Button" parent="buttons" unique_id=925183983]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 37.0
+offset_right = 571.0
+offset_bottom = 93.0
+theme_override_fonts/font = ExtResource("2_008s5")
+theme_override_font_sizes/font_size = 20
+text = "Quit Game"
+
+[node name="start" type="Button" parent="buttons" unique_id=852743926]
+layout_mode = 0
+offset_left = 172.0
+offset_top = -469.0
+offset_right = 358.0
+offset_bottom = -414.0
+theme_override_fonts/font = ExtResource("2_008s5")
+theme_override_font_sizes/font_size = 20
+text = "Start Game"
+
+[connection signal="pressed" from="buttons/quit" to="." method="_on_quit_pressed"]

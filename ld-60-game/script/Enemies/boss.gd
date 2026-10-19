@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 	player = get_tree().get_first_node_in_group("Player")
 	distance = player.global_position - self.global_position
 	move_and_slide()
-	#
+	
 	
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	print(area)
