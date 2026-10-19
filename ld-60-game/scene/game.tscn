@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://pm7emgr28huy" path="res://scene/StandardEnemy.tscn" id="2_dbls1"]
 [ext_resource type="Script" uid="uid://d22ir26i1nexq" path="res://script/object_stats.gd" id="4_17rxn"]
 [ext_resource type="Texture2D" uid="uid://c2th6vlqqc2ua" path="res://assets/Paralaxe1.png" id="4_xlg7c"]
-[ext_resource type="PackedScene" uid="uid://fayl34ikgtsh" path="res://scene/licht.tscn" id="4_xwcet"]
+[ext_resource type="PackedScene" uid="uid://fayl34ikgtsh" path="res://scene/Objects/licht.tscn" id="4_xwcet"]
 [ext_resource type="Texture2D" uid="uid://cou5g1u8e8bov" path="res://assets/Paralaxe2.png" id="5_qpk70"]
 [ext_resource type="Texture2D" uid="uid://c7uwfo76ng27j" path="res://assets/Paralaxe0.png" id="6_17rxn"]
 [ext_resource type="Texture2D" uid="uid://h6ueeee7wsnp" path="res://assets/Paralaxe3.png" id="6_ll5lq"]
