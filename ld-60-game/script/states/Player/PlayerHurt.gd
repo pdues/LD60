@@ -6,13 +6,15 @@ class_name PlayerHurt
 @onready var max_hp = 10
 
 func Exit():
-	player.hit = false
 	player.gets_hit_by = ""
+	player.hit = false
 	
 func Physics_Update(delta: float):
 	if player.gets_hit_by == "Enemy":
 		player.hp -= 2
-	
+	if player.gets_hit_by == "Boss":
+		player.hp -= 5
+
 	hp_bar.value = player.hp
 	
 	if player.hp == 0:

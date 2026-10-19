@@ -8,6 +8,10 @@ var time_elapsed := 0.0
 
 func enter() -> void:
 	time_elapsed = 0.0
+	if boss.distance.x >= 0:
+		boss.hitbox_melee1.position.x = 42.0
+	elif boss.distance.x < 0:
+		boss.hitbox_melee1.position.x = -42.0
 	
 func physics_update(delta: float) -> void:
 	time_elapsed += delta

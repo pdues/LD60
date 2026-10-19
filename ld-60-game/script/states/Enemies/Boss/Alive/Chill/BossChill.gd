@@ -8,7 +8,7 @@ func enter():
 	super.enter()
 	print("chill")
 	
-	if randf() < 0.5:
+	if randf() < 0.8:
 		print("enter chase")
 		transition_to(chase_state)
 	else:

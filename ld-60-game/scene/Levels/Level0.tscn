@@ -32,14 +32,14 @@ polygon = PackedVector2Array(-345, 21, 730, 21, -133, 89, -346, 86)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5g16k"]
 polygon = PackedVector2Array(-181, 1, -150, 1, -150, -5, -149, -5, -149, 1, -136, 1, -136, -9, -135, -9, -135, 1, -123, 1, -122, 15, -181, 15)
 
-[sub_resource type="Resource" id="Resource_c0jqb"]
+[sub_resource type="Resource" id="Resource_7dwju"]
 resource_local_to_scene = true
 script = ExtResource("4_nlm2r")
 max_health = 5
 current_health = 5
 metadata/_custom_type_script = "uid://d22ir26i1nexq"
 
-[sub_resource type="Resource" id="Resource_8c1jw"]
+[sub_resource type="Resource" id="Resource_db6jr"]
 resource_local_to_scene = true
 script = ExtResource("4_nlm2r")
 max_health = 5
@@ -203,7 +203,7 @@ sources/1 = SubResource("TileSetAtlasSource_81276")
 sources/2 = SubResource("TileSetAtlasSource_ve786")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
-size = Vector2(22, 20)
+size = Vector2(61, 20)
 
 [node name="Level0" type="Node2D" unique_id=1573071005]
 
@@ -247,11 +247,11 @@ occluder = SubResource("OccluderPolygon2D_5g16k")
 
 [node name="StandardEnemy" parent="." unique_id=1837803404 instance=ExtResource("3_dsys1")]
 position = Vector2(1422, 71)
-stats = SubResource("Resource_c0jqb")
+stats = SubResource("Resource_7dwju")
 
 [node name="StandardEnemy2" parent="." unique_id=345439060 instance=ExtResource("3_dsys1")]
 position = Vector2(994, 0)
-stats = SubResource("Resource_8c1jw")
+stats = SubResource("Resource_db6jr")
 
 [node name="Hindernis" parent="." unique_id=405979128 instance=ExtResource("5_o5ujw")]
 position = Vector2(80, 545)
@@ -323,7 +323,7 @@ collision_mask = 14
 script = ExtResource("14_5dx4h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=308653901]
-position = Vector2(2, 5)
+position = Vector2(3.5, 5)
 shape = SubResource("RectangleShape2D_xrivr")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

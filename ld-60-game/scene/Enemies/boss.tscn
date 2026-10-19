@@ -16,8 +16,6 @@
 [ext_resource type="Script" uid="uid://bext5xdjl6kg4" path="res://script/states/Enemies/Boss/Alive/Attack/BossAttack.gd" id="11_dlumj"]
 [ext_resource type="Script" uid="uid://bamoa488lqdlx" path="res://script/states/Enemies/Boss/Alive/Attack/BossMelee1.gd" id="12_dlumj"]
 [ext_resource type="Script" uid="uid://cli0rgqjatjtl" path="res://script/states/Enemies/Boss/Alive/BossTransition.gd" id="12_l0vgi"]
-[ext_resource type="Script" uid="uid://8ta7oy8sgr5k" path="res://script/states/Enemies/Boss/Alive/Attack/BossMelee2.gd" id="13_dlumj"]
-[ext_resource type="Script" uid="uid://b85xk7c3x77t1" path="res://script/states/Enemies/Boss/Alive/Attack/BossAoE.gd" id="14_wu6rk"]
 [ext_resource type="Script" uid="uid://cslaq6x7genxl" path="res://script/states/HFSM/HFSM.gd" id="17_wu6rk"]
 [ext_resource type="Script" uid="uid://bkypjglw1d6ng" path="res://script/states/Enemies/Boss/Alive/BossPhase2.gd" id="19_c5jam"]
 [ext_resource type="Texture2D" uid="uid://ulufer6iumfd" path="res://assets/tür.png" id="21_xejww"]
@@ -26,6 +24,7 @@
 resource_local_to_scene = true
 resource_name = "BossStats"
 script = ExtResource("2_y8m2v")
+max_health = 0
 metadata/_custom_type_script = "uid://d22ir26i1nexq"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aliaw"]
@@ -57,6 +56,7 @@ height = 164.0
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_lmix8")
+hp = 51
 hurtbox = NodePath("Hurtbox")
 hitbox_melee1 = NodePath("Hitbox_melee1/CollisionShape2D")
 hitbox_melee2 = NodePath("Hitbox_melee2/CollisionShape2D")
@@ -162,15 +162,15 @@ script = ExtResource("12_dlumj")
 phase = NodePath("../..")
 metadata/_custom_type_script = "uid://bamoa488lqdlx"
 
-[node name="melee2" type="Node" parent="HFSM/alive/phase1/attack" unique_id=1322018765 node_paths=PackedStringArray("phase")]
-script = ExtResource("13_dlumj")
+[node name="melee2" type="Node" parent="HFSM/alive/phase1/attack" unique_id=1853711284 node_paths=PackedStringArray("phase")]
+script = ExtResource("12_dlumj")
 phase = NodePath("../..")
-metadata/_custom_type_script = "uid://8ta7oy8sgr5k"
+metadata/_custom_type_script = "uid://bamoa488lqdlx"
 
-[node name="AoE" type="Node" parent="HFSM/alive/phase1/attack" unique_id=1003267897 node_paths=PackedStringArray("phase")]
-script = ExtResource("14_wu6rk")
+[node name="AoE" type="Node" parent="HFSM/alive/phase1/attack" unique_id=1112072525 node_paths=PackedStringArray("phase")]
+script = ExtResource("12_dlumj")
 phase = NodePath("../..")
-metadata/_custom_type_script = "uid://b85xk7c3x77t1"
+metadata/_custom_type_script = "uid://bamoa488lqdlx"
 
 [node name="transition" type="Node" parent="HFSM/alive" unique_id=121049620 node_paths=PackedStringArray("phase2_state")]
 script = ExtResource("12_l0vgi")
@@ -212,10 +212,10 @@ script = ExtResource("12_dlumj")
 phase = NodePath("../..")
 metadata/_custom_type_script = "uid://bamoa488lqdlx"
 
-[node name="melee2" type="Node" parent="HFSM/alive/phase2/attack" unique_id=1424169972 node_paths=PackedStringArray("phase")]
-script = ExtResource("13_dlumj")
+[node name="melee2" type="Node" parent="HFSM/alive/phase2/attack" unique_id=1405964012 node_paths=PackedStringArray("phase")]
+script = ExtResource("12_dlumj")
 phase = NodePath("../..")
-metadata/_custom_type_script = "uid://8ta7oy8sgr5k"
+metadata/_custom_type_script = "uid://bamoa488lqdlx"
 
 [node name="death" type="Node" parent="HFSM" unique_id=378459121]
 script = ExtResource("7_e6ho8")

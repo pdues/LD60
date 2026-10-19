@@ -13,7 +13,7 @@ func Enter():
 
 
 func Physics_Update(_delta: float):
-	if player.hit == true:
+	if player.hit:
 		Transitioned.emit(self, "hurt")
 	
 	var direction = Input.get_axis("ui_left", "ui_right")
