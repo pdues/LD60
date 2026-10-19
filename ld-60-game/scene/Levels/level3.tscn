@@ -270,7 +270,8 @@ skew = 0.12217305
 position = Vector2(-3, 162)
 
 [node name="Boss" parent="." unique_id=1121860251 instance=ExtResource("13_m1fuq")]
-position = Vector2(1785, -150)
+position = Vector2(1523, -102)
+hp = 100
 stats = SubResource("Resource_3vexe")
 move_speed = 75.0
 

@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://lgktiyao3klo"]
 
 [ext_resource type="Script" uid="uid://b0c5re34ov6m3" path="res://script/Enemies/boss.gd" id="1_lmix8"]
-[ext_resource type="Texture2D" uid="uid://b3nrl06y7aimw" path="res://icon.svg" id="2_ko00d"]
 [ext_resource type="Script" uid="uid://d22ir26i1nexq" path="res://script/object_stats.gd" id="2_y8m2v"]
+[ext_resource type="Texture2D" uid="uid://dn7j7vpj077m6" path="res://assets/boss_idle.png" id="3_c5jam"]
 [ext_resource type="Script" uid="uid://dt5flil8qjm4a" path="res://script/hurtbox.gd" id="3_wectw"]
 [ext_resource type="Script" uid="uid://d3fpsa10xismy" path="res://script/hitbox.gd" id="4_wu6rk"]
+[ext_resource type="Texture2D" uid="uid://c1dtwkyyh2sbm" path="res://assets/boss_attack_close.png" id="4_xejww"]
 [ext_resource type="Script" uid="uid://5peq5aw5j0f3" path="res://script/states/Enemies/Boss/BossStart.gd" id="5_wectw"]
 [ext_resource type="Script" uid="uid://spu474uaedmi" path="res://script/states/Enemies/Boss/Alive/BossAlive.gd" id="6_esv6b"]
 [ext_resource type="Script" uid="uid://ci3rdym5rhinp" path="res://script/weapon_stats.gd" id="6_x27xr"]
@@ -27,8 +28,77 @@ script = ExtResource("2_y8m2v")
 max_health = 0
 metadata/_custom_type_script = "uid://d22ir26i1nexq"
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_stp52"]
+atlas = ExtResource("3_c5jam")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrhge"]
+atlas = ExtResource("3_c5jam")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wts0n"]
+atlas = ExtResource("3_c5jam")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogb3i"]
+atlas = ExtResource("3_c5jam")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixo6x"]
+atlas = ExtResource("4_xejww")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7olgj"]
+atlas = ExtResource("4_xejww")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efbiy"]
+atlas = ExtResource("4_xejww")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjtc5"]
+atlas = ExtResource("4_xejww")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_crl02"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stp52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrhge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wts0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogb3i")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixo6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7olgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efbiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjtc5")
+}],
+"loop": 1,
+"name": &"melee",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aliaw"]
-size = Vector2(84, 112)
+size = Vector2(24, 56)
 
 [sub_resource type="Resource" id="Resource_y8m2v"]
 resource_local_to_scene = true
@@ -38,8 +108,8 @@ damage = 5
 metadata/_custom_type_script = "uid://ci3rdym5rhinp"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_crl02"]
-radius = 31.0
-height = 98.0
+radius = 11.0
+height = 52.0
 
 [sub_resource type="Resource" id="Resource_x27xr"]
 resource_local_to_scene = true
@@ -52,7 +122,7 @@ metadata/_custom_type_script = "uid://ci3rdym5rhinp"
 radius = 23.0
 height = 164.0
 
-[node name="Boss" type="CharacterBody2D" unique_id=1121860251 node_paths=PackedStringArray("hurtbox", "hitbox_melee1", "hitbox_melee2", "hp_bar") groups=["Boss"]]
+[node name="Boss" type="CharacterBody2D" unique_id=1121860251 node_paths=PackedStringArray("hurtbox", "hitbox_melee1", "hitbox_melee2", "hp_bar", "boss_sprite") groups=["Boss"]]
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_lmix8")
@@ -61,13 +131,18 @@ hurtbox = NodePath("Hurtbox")
 hitbox_melee1 = NodePath("Hitbox_melee1/CollisionShape2D")
 hitbox_melee2 = NodePath("Hitbox_melee2/CollisionShape2D")
 hp_bar = NodePath("TextureProgressBar")
+boss_sprite = NodePath("Sprite2D")
 stats = SubResource("Resource_crl02")
 stopping_speed = 2.0
 max_attack_range = 75.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1718153696]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1797132750]
 scale = Vector2(0.65625, 0.875)
-texture = ExtResource("2_ko00d")
+sprite_frames = SubResource("SpriteFrames_crl02")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.5214978
+flip_h = true
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=424362969]
 collision_layer = 8
@@ -87,7 +162,7 @@ weapon_stats = SubResource("Resource_y8m2v")
 metadata/_custom_type_script = "uid://d3fpsa10xismy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox_melee1" unique_id=1598851003]
-position = Vector2(42, 0)
+position = Vector2(13, 0)
 shape = SubResource("CapsuleShape2D_crl02")
 disabled = true
 
