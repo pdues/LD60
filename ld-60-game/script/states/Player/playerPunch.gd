@@ -14,7 +14,7 @@ func Enter():
 	#hitbox_punch.disabled = false
 	
 func Physics_Update(delta: float):
-	if player.hit == true:
+	if player.hit:
 		Transitioned.emit(self, "hurt")
 		
 	player.velocity.x = 0
@@ -51,4 +51,5 @@ func Physics_Update(delta: float):
 
 
 func Exit():
+	hitbox_punch.disabled = true
 	print("end punch")
