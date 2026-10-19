@@ -6,6 +6,7 @@
 
 [node name="Node2D" type="Node2D" unique_id=638555699]
 script = ExtResource("1_008s5")
+metadata/_edit_vertical_guides_ = [961.0, 480.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=199409904]
 modulate = Color(0.59424114, 0.59424114, 0.59424114, 1)
@@ -21,10 +22,10 @@ offset_bottom = 40.0
 
 [node name="quit" type="Button" parent="buttons" unique_id=925183983]
 layout_mode = 0
-offset_left = 335.0
-offset_top = 47.0
-offset_right = 523.0
-offset_bottom = 103.0
+offset_left = 383.0
+offset_top = 37.0
+offset_right = 571.0
+offset_bottom = 93.0
 theme_override_fonts/font = ExtResource("2_008s5")
 theme_override_font_sizes/font_size = 20
 text = "Quit Game"
