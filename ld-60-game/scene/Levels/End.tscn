@@ -9,8 +9,8 @@ script = ExtResource("1_008s5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=199409904]
 modulate = Color(0.59424114, 0.59424114, 0.59424114, 1)
-position = Vector2(445, 273.99997)
-scale = Vector2(0.99687505, 1.00395)
+position = Vector2(488.00003, 275)
+scale = Vector2(1.1034853, 1.1296296)
 texture = ExtResource("2_gbxr3")
 
 [node name="buttons" type="Control" parent="." unique_id=2046751859]
