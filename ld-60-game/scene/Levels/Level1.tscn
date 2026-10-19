@@ -22,7 +22,7 @@ metadata/_snap_count = 100
 gradient = SubResource("Gradient_ll5lq")
 fill_to = Vector2(0.06521739, 0.073913045)
 
-[sub_resource type="Resource" id="Resource_lc31b"]
+[sub_resource type="Resource" id="Resource_no78e"]
 resource_local_to_scene = true
 resource_name = "EnemyStats"
 script = ExtResource("6_vr3a4")
@@ -125,7 +125,7 @@ gradient = SubResource("Gradient_5pmbp")
 fill = 1
 fill_from = Vector2(0.4826087, 0.47391304)
 
-[node name="Node2D" type="Node2D" unique_id=1215644629]
+[node name="Node2D2" type="Node2D" unique_id=1215644629]
 
 [node name="player" parent="." unique_id=963260103 node_paths=PackedStringArray("respawnpoint") instance=ExtResource("1_pu4bb")]
 z_index = 11
@@ -173,7 +173,7 @@ position = Vector2(1023, 123)
 
 [node name="StandardEnemy" parent="." unique_id=1837803404 instance=ExtResource("5_m3dbj")]
 position = Vector2(943, 149)
-stats = SubResource("Resource_lc31b")
+stats = SubResource("Resource_no78e")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=643946628]
 texture_filter = 1
